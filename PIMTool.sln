@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30309.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PIMTool.Test", "PIMTool.Test\PIMTool.Test.csproj", "{660F61F7-AE3F-4712-A1D1-A607C4401BB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PIMTool.Services", "PIMTool.Services\PIMTool.Services.csproj", "{56649A9E-2780-469B-87C5-398A354E4D04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PIMTool.Client", "PIMTool.Client\PIMTool.Client.csproj", "{08E9E8CF-81AE-4085-9AF8-D42542445AD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PIMTool.Common", "PIMTool.Common\PIMTool.Common.csproj", "{4E0FA7FE-DFB0-4324-8921-3055417CB2A1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{660F61F7-AE3F-4712-A1D1-A607C4401BB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{660F61F7-AE3F-4712-A1D1-A607C4401BB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{660F61F7-AE3F-4712-A1D1-A607C4401BB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{660F61F7-AE3F-4712-A1D1-A607C4401BB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56649A9E-2780-469B-87C5-398A354E4D04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56649A9E-2780-469B-87C5-398A354E4D04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56649A9E-2780-469B-87C5-398A354E4D04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56649A9E-2780-469B-87C5-398A354E4D04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08E9E8CF-81AE-4085-9AF8-D42542445AD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08E9E8CF-81AE-4085-9AF8-D42542445AD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08E9E8CF-81AE-4085-9AF8-D42542445AD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08E9E8CF-81AE-4085-9AF8-D42542445AD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E0FA7FE-DFB0-4324-8921-3055417CB2A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E0FA7FE-DFB0-4324-8921-3055417CB2A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E0FA7FE-DFB0-4324-8921-3055417CB2A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E0FA7FE-DFB0-4324-8921-3055417CB2A1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E1F9FCFC-9F8D-47EC-AF6A-095C24BA876A}
+	EndGlobalSection
+EndGlobal

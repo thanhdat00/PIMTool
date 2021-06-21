@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -9,6 +10,8 @@ namespace PIMTool.Services.Service.Entities
         public ProjectEntity()
         {
             Task = new List<TaskEntity>();
+            Employees = new List<EmployeeEntity>();
+            //Group = new GroupEntity();
         }
 
         [Required, StringLength(100), Display(Name = "Project Name")]
@@ -18,6 +21,9 @@ namespace PIMTool.Services.Service.Entities
             set;
         }
 
+        public virtual int ProjectNumber { get; set; }
+        public virtual string Customer { get; set; }
+        public virtual string Status { get; set; }
         [Required, Display(Name = "Start Date")]
         public virtual DateTime StartDate
         {
@@ -32,6 +38,20 @@ namespace PIMTool.Services.Service.Entities
             set;
         }
 
-        public virtual IList<TaskEntity> Task { get; set; }
+        public virtual ICollection<TaskEntity> Task { get; set; }
+        
+        public virtual ICollection<EmployeeEntity> Employees { get; set; }
+        public virtual int GroupId { get; set; }
+
+        public virtual string GetMember()
+        {
+            string res = "";
+            foreach(var employee in Employees)
+            {
+                res += employee.Visa;
+                res += ",";
+            }
+            return res;
+        }
     }
 }

@@ -1,0 +1,5 @@
+2021-05-24 17:54:25,285 [3      ] DEBUG  Client                         | (null) | Request [GET] to url 'https://localhost:44334/api/project/GetProject/10'
+2021-05-24 17:54:25,329 [3      ] DEBUG  {PIMToolClient                 | (null) | Request: Method: GET, RequestUri: 'https://localhost:44334/api/project/GetProject/10', Version: 1.1, Content: <null>, Headers:
+{
+  Accept: application/json
+}

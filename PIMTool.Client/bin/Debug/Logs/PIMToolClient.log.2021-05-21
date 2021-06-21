@@ -1,0 +1,152 @@
+2021-05-21 09:12:10,989 [3      ] DEBUG  Client                         | (null) | Request [GET] to url 'https://localhost:44334/api/project/GetProject/10'
+2021-05-21 09:12:11,096 [3      ] DEBUG  {PIMToolClient                 | (null) | Request: Method: GET, RequestUri: 'https://localhost:44334/api/project/GetProject/10', Version: 1.1, Content: <null>, Headers:
+{
+  Accept: application/json
+}
+2021-05-21 09:12:16,438 [11     ] DEBUG  {PIMToolClient                 | (null) | Response: StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.StreamContent, Headers:
+{
+  Pragma: no-cache
+  X-SourceFiles: =?UTF-8?B?QzpcVXNlcnNcRE9IXHNvdXJjZVxyZXBvc1xuZXdjb21tZXJzLW5ldFx3cGZtdnZtX25oaWJlcm5hdGVcb24tYm9hcmRpbmctZXhlcmNpc2Vcc3JjXFBJTVRvb2wuU2VydmljZXNcYXBpXHByb2plY3RcR2V0UHJvamVjdFwxMA==?=
+  Cache-Control: no-cache
+  Date: Fri, 21 May 2021 02:12:15 GMT
+  Server: Microsoft-IIS/10.0
+  X-AspNet-Version: 4.0.30319
+  X-Powered-By: ASP.NET
+  Content-Length: 90
+  Content-Type: application/json; charset=utf-8
+  Expires: -1
+}
+2021-05-21 09:12:16,439 [11     ] DEBUG  {PIMToolClient                 | (null) | Response-Content: {"Name":"Test2","StartDate":"0001-01-01T00:00:00","FinishDate":null,"Id":2,"RowVersion":0}
+2021-05-21 11:17:54,572 [3      ] DEBUG  Client                         | (null) | Request [GET] to url 'https://localhost:44334/api/project/GetProject/10'
+2021-05-21 11:17:54,744 [3      ] DEBUG  {PIMToolClient                 | (null) | Request: Method: GET, RequestUri: 'https://localhost:44334/api/project/GetProject/10', Version: 1.1, Content: <null>, Headers:
+{
+  Accept: application/json
+}
+2021-05-21 11:18:05,934 [13     ] DEBUG  {PIMToolClient                 | (null) | Response: StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.StreamContent, Headers:
+{
+  Pragma: no-cache
+  X-SourceFiles: =?UTF-8?B?QzpcVXNlcnNcRE9IXHNvdXJjZVxyZXBvc1xuZXdjb21tZXJzLW5ldFx3cGZtdnZtX25oaWJlcm5hdGVcb24tYm9hcmRpbmctZXhlcmNpc2Vcc3JjXFBJTVRvb2wuU2VydmljZXNcYXBpXHByb2plY3RcR2V0UHJvamVjdFwxMA==?=
+  Cache-Control: no-cache
+  Date: Fri, 21 May 2021 04:18:05 GMT
+  Server: Microsoft-IIS/10.0
+  X-AspNet-Version: 4.0.30319
+  X-Powered-By: ASP.NET
+  Content-Length: 90
+  Content-Type: application/json; charset=utf-8
+  Expires: -1
+}
+2021-05-21 11:18:05,935 [13     ] DEBUG  {PIMToolClient                 | (null) | Response-Content: {"Name":"Test2","StartDate":"0001-01-01T00:00:00","FinishDate":null,"Id":2,"RowVersion":0}
+2021-05-21 11:21:48,504 [3      ] DEBUG  Client                         | (null) | Request [GET] to url 'https://localhost:44334/api/project/GetProject/10'
+2021-05-21 11:21:48,539 [3      ] DEBUG  {PIMToolClient                 | (null) | Request: Method: GET, RequestUri: 'https://localhost:44334/api/project/GetProject/10', Version: 1.1, Content: <null>, Headers:
+{
+  Accept: application/json
+}
+2021-05-21 11:21:52,689 [9      ] DEBUG  {PIMToolClient                 | (null) | Response: StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.StreamContent, Headers:
+{
+  Pragma: no-cache
+  X-SourceFiles: =?UTF-8?B?QzpcVXNlcnNcRE9IXHNvdXJjZVxyZXBvc1xuZXdjb21tZXJzLW5ldFx3cGZtdnZtX25oaWJlcm5hdGVcb24tYm9hcmRpbmctZXhlcmNpc2Vcc3JjXFBJTVRvb2wuU2VydmljZXNcYXBpXHByb2plY3RcR2V0UHJvamVjdFwxMA==?=
+  Cache-Control: no-cache
+  Date: Fri, 21 May 2021 04:21:52 GMT
+  Server: Microsoft-IIS/10.0
+  X-AspNet-Version: 4.0.30319
+  X-Powered-By: ASP.NET
+  Content-Length: 90
+  Content-Type: application/json; charset=utf-8
+  Expires: -1
+}
+2021-05-21 11:21:52,691 [9      ] DEBUG  {PIMToolClient                 | (null) | Response-Content: {"Name":"Test2","StartDate":"0001-01-01T00:00:00","FinishDate":null,"Id":2,"RowVersion":0}
+2021-05-21 11:34:21,822 [3      ] DEBUG  Client                         | (null) | Request [GET] to url 'https://localhost:44334/api/project/GetProject/10'
+2021-05-21 11:34:21,869 [3      ] DEBUG  {PIMToolClient                 | (null) | Request: Method: GET, RequestUri: 'https://localhost:44334/api/project/GetProject/10', Version: 1.1, Content: <null>, Headers:
+{
+  Accept: application/json
+}
+2021-05-21 11:34:25,793 [10     ] DEBUG  {PIMToolClient                 | (null) | Response: StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.StreamContent, Headers:
+{
+  Pragma: no-cache
+  X-SourceFiles: =?UTF-8?B?QzpcVXNlcnNcRE9IXHNvdXJjZVxyZXBvc1xuZXdjb21tZXJzLW5ldFx3cGZtdnZtX25oaWJlcm5hdGVcb24tYm9hcmRpbmctZXhlcmNpc2Vcc3JjXFBJTVRvb2wuU2VydmljZXNcYXBpXHByb2plY3RcR2V0UHJvamVjdFwxMA==?=
+  Cache-Control: no-cache
+  Date: Fri, 21 May 2021 04:34:25 GMT
+  Server: Microsoft-IIS/10.0
+  X-AspNet-Version: 4.0.30319
+  X-Powered-By: ASP.NET
+  Content-Length: 90
+  Content-Type: application/json; charset=utf-8
+  Expires: -1
+}
+2021-05-21 11:34:25,794 [10     ] DEBUG  {PIMToolClient                 | (null) | Response-Content: {"Name":"Test2","StartDate":"0001-01-01T00:00:00","FinishDate":null,"Id":2,"RowVersion":0}
+2021-05-21 11:35:46,068 [3      ] DEBUG  Client                         | (null) | Request [GET] to url 'https://localhost:44334/api/project/GetProject/10'
+2021-05-21 11:35:46,104 [3      ] DEBUG  {PIMToolClient                 | (null) | Request: Method: GET, RequestUri: 'https://localhost:44334/api/project/GetProject/10', Version: 1.1, Content: <null>, Headers:
+{
+  Accept: application/json
+}
+2021-05-21 11:35:50,104 [11     ] DEBUG  {PIMToolClient                 | (null) | Response: StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.StreamContent, Headers:
+{
+  Pragma: no-cache
+  X-SourceFiles: =?UTF-8?B?QzpcVXNlcnNcRE9IXHNvdXJjZVxyZXBvc1xuZXdjb21tZXJzLW5ldFx3cGZtdnZtX25oaWJlcm5hdGVcb24tYm9hcmRpbmctZXhlcmNpc2Vcc3JjXFBJTVRvb2wuU2VydmljZXNcYXBpXHByb2plY3RcR2V0UHJvamVjdFwxMA==?=
+  Cache-Control: no-cache
+  Date: Fri, 21 May 2021 04:35:49 GMT
+  Server: Microsoft-IIS/10.0
+  X-AspNet-Version: 4.0.30319
+  X-Powered-By: ASP.NET
+  Content-Length: 90
+  Content-Type: application/json; charset=utf-8
+  Expires: -1
+}
+2021-05-21 11:35:50,105 [11     ] DEBUG  {PIMToolClient                 | (null) | Response-Content: {"Name":"Test2","StartDate":"0001-01-01T00:00:00","FinishDate":null,"Id":2,"RowVersion":0}
+2021-05-21 11:41:59,527 [3      ] DEBUG  Client                         | (null) | Request [GET] to url 'https://localhost:44334/api/project/GetProject/10'
+2021-05-21 11:41:59,571 [3      ] DEBUG  {PIMToolClient                 | (null) | Request: Method: GET, RequestUri: 'https://localhost:44334/api/project/GetProject/10', Version: 1.1, Content: <null>, Headers:
+{
+  Accept: application/json
+}
+2021-05-21 11:42:03,558 [12     ] DEBUG  {PIMToolClient                 | (null) | Response: StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.StreamContent, Headers:
+{
+  Pragma: no-cache
+  X-SourceFiles: =?UTF-8?B?QzpcVXNlcnNcRE9IXHNvdXJjZVxyZXBvc1xuZXdjb21tZXJzLW5ldFx3cGZtdnZtX25oaWJlcm5hdGVcb24tYm9hcmRpbmctZXhlcmNpc2Vcc3JjXFBJTVRvb2wuU2VydmljZXNcYXBpXHByb2plY3RcR2V0UHJvamVjdFwxMA==?=
+  Cache-Control: no-cache
+  Date: Fri, 21 May 2021 04:42:03 GMT
+  Server: Microsoft-IIS/10.0
+  X-AspNet-Version: 4.0.30319
+  X-Powered-By: ASP.NET
+  Content-Length: 90
+  Content-Type: application/json; charset=utf-8
+  Expires: -1
+}
+2021-05-21 11:42:03,559 [12     ] DEBUG  {PIMToolClient                 | (null) | Response-Content: {"Name":"Test2","StartDate":"0001-01-01T00:00:00","FinishDate":null,"Id":2,"RowVersion":0}
+2021-05-21 11:51:25,413 [3      ] DEBUG  Client                         | (null) | Request [GET] to url 'https://localhost:44334/api/project/GetProject/10'
+2021-05-21 11:51:25,458 [3      ] DEBUG  {PIMToolClient                 | (null) | Request: Method: GET, RequestUri: 'https://localhost:44334/api/project/GetProject/10', Version: 1.1, Content: <null>, Headers:
+{
+  Accept: application/json
+}
+2021-05-21 11:51:29,410 [11     ] DEBUG  {PIMToolClient                 | (null) | Response: StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.StreamContent, Headers:
+{
+  Pragma: no-cache
+  X-SourceFiles: =?UTF-8?B?QzpcVXNlcnNcRE9IXHNvdXJjZVxyZXBvc1xuZXdjb21tZXJzLW5ldFx3cGZtdnZtX25oaWJlcm5hdGVcb24tYm9hcmRpbmctZXhlcmNpc2Vcc3JjXFBJTVRvb2wuU2VydmljZXNcYXBpXHByb2plY3RcR2V0UHJvamVjdFwxMA==?=
+  Cache-Control: no-cache
+  Date: Fri, 21 May 2021 04:51:28 GMT
+  Server: Microsoft-IIS/10.0
+  X-AspNet-Version: 4.0.30319
+  X-Powered-By: ASP.NET
+  Content-Length: 4
+  Content-Type: application/json; charset=utf-8
+  Expires: -1
+}
+2021-05-21 11:51:29,411 [11     ] DEBUG  {PIMToolClient                 | (null) | Response-Content: null
+2021-05-21 11:52:30,300 [3      ] DEBUG  Client                         | (null) | Request [GET] to url 'https://localhost:44334/api/project/GetProject/10'
+2021-05-21 11:52:30,342 [3      ] DEBUG  {PIMToolClient                 | (null) | Request: Method: GET, RequestUri: 'https://localhost:44334/api/project/GetProject/10', Version: 1.1, Content: <null>, Headers:
+{
+  Accept: application/json
+}
+2021-05-21 11:52:34,295 [11     ] DEBUG  {PIMToolClient                 | (null) | Response: StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.StreamContent, Headers:
+{
+  Pragma: no-cache
+  X-SourceFiles: =?UTF-8?B?QzpcVXNlcnNcRE9IXHNvdXJjZVxyZXBvc1xuZXdjb21tZXJzLW5ldFx3cGZtdnZtX25oaWJlcm5hdGVcb24tYm9hcmRpbmctZXhlcmNpc2Vcc3JjXFBJTVRvb2wuU2VydmljZXNcYXBpXHByb2plY3RcR2V0UHJvamVjdFwxMA==?=
+  Cache-Control: no-cache
+  Date: Fri, 21 May 2021 04:52:33 GMT
+  Server: Microsoft-IIS/10.0
+  X-AspNet-Version: 4.0.30319
+  X-Powered-By: ASP.NET
+  Content-Length: 4
+  Content-Type: application/json; charset=utf-8
+  Expires: -1
+}
+2021-05-21 11:52:34,296 [11     ] DEBUG  {PIMToolClient                 | (null) | Response-Content: null

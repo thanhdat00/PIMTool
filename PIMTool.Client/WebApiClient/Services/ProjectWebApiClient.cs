@@ -1,6 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using PIMTool.Common;
 using PIMTool.Common.BusinessObjects;
+using PIMTool.Services.Resource;
 
 namespace PIMTool.Client.WebApiClient.Services
 {
@@ -13,14 +15,30 @@ namespace PIMTool.Client.WebApiClient.Services
 
         public override string RoutePrefix => RouteConstants.ProjectApi;
 
-        public string GetAllProjects()
+        public List<ProjectResource> GetAllProjects()
         {
-            return Task.Run(() => Get<string>(RouteConstants.GetAllProjects)).Result;
+            return Task.Run(() => Get<List<ProjectResource>>(RouteConstants.GetAllProjects)).Result;
         }
 
         public Project GetProject(int projectId)
         {
             return Task.Run(() => Get<Project>(string.Format(RouteConstants.GetProjectClient, projectId))).Result;
+        }
+
+        public void SaveProject<SaveProjectResource>(SaveProjectResource resource)
+        {
+            Task.Run(() => Post<SaveProjectResource>(RouteConstants.AddProject, resource));
+        }
+
+        public void UpdateProject(SaveProjectResource resource)
+        {
+            Task.Run(() => Put(RouteConstants.UpdateProject, resource));
+        }
+
+        public void DeleteProject(int projectNumber)
+        {
+            string route = "DeleteProject/" + projectNumber.ToString();
+            Task.Run(() => Delete(route));
         }
     }
 }

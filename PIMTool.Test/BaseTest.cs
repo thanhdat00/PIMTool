@@ -16,7 +16,7 @@ namespace PIMTool.Test
         }
         public IKernel Kernel { get; private set; }
 
-        [TestFixtureSetUp]
+        [SetUp]
         public void Setup()
         {
             PrepareNinjectModuleBinding();

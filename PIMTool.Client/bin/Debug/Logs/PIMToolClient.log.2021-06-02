@@ -1,0 +1,265 @@
+2021-06-02 09:42:03,955 [3      ] DEBUG  Client                         | (null) | Request [GET] to url 'https://localhost:44331/api/project/GetProject/10'
+2021-06-02 09:42:04,018 [3      ] DEBUG  {PIMToolClient                 | (null) | Request: Method: GET, RequestUri: 'https://localhost:44331/api/project/GetProject/10', Version: 1.1, Content: <null>, Headers:
+{
+  Accept: application/json
+}
+2021-06-02 09:42:08,179 [10     ] ERROR  {PIMToolClient                 | (null) | Failed to get response: System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:44331
+   at System.Net.Sockets.Socket.InternalEndConnect(IAsyncResult asyncResult)
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   at System.Net.Http.HttpClientHandler.GetResponseCallback(IAsyncResult ar)
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at PIMTool.Client.WebApiClient.LoggingHandler.<SendAsync>d__1.MoveNext() in C:\Users\ThanhDat\OneDrive\Máy tính\PIM-Tool\PIM-Tool\PIMTool.Client\WebApiClient\LoggingHandler.cs:line 25
+System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:44331
+   at System.Net.Sockets.Socket.InternalEndConnect(IAsyncResult asyncResult)
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   at System.Net.Http.HttpClientHandler.GetResponseCallback(IAsyncResult ar)
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at PIMTool.Client.WebApiClient.LoggingHandler.<SendAsync>d__1.MoveNext() in C:\Users\ThanhDat\OneDrive\Máy tính\PIM-Tool\PIM-Tool\PIMTool.Client\WebApiClient\LoggingHandler.cs:line 25
+2021-06-02 09:42:08,258 [10     ] ERROR  Client                         | (null) | Error when sending request to server
+System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:44331
+   at System.Net.Sockets.Socket.InternalEndConnect(IAsyncResult asyncResult)
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   at System.Net.Http.HttpClientHandler.GetResponseCallback(IAsyncResult ar)
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at PIMTool.Client.WebApiClient.LoggingHandler.<SendAsync>d__1.MoveNext() in C:\Users\ThanhDat\OneDrive\Máy tính\PIM-Tool\PIM-Tool\PIMTool.Client\WebApiClient\LoggingHandler.cs:line 36
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at PIMTool.Client.WebApiClient.WebApiClientBase.<PerformWebClientAction>d__13.MoveNext() in C:\Users\ThanhDat\OneDrive\Máy tính\PIM-Tool\PIM-Tool\PIMTool.Client\WebApiClient\WebApiClientBase.cs:line 95
+2021-06-02 10:25:46,120 [3      ] DEBUG  Client                         | (null) | Request [GET] to url 'https://localhost:44331/api/project/GetProject/10'
+2021-06-02 10:25:46,164 [3      ] DEBUG  {PIMToolClient                 | (null) | Request: Method: GET, RequestUri: 'https://localhost:44331/api/project/GetProject/10', Version: 1.1, Content: <null>, Headers:
+{
+  Accept: application/json
+}
+2021-06-02 10:25:50,316 [9      ] ERROR  {PIMToolClient                 | (null) | Failed to get response: System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:44331
+   at System.Net.Sockets.Socket.InternalEndConnect(IAsyncResult asyncResult)
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   at System.Net.Http.HttpClientHandler.GetResponseCallback(IAsyncResult ar)
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at PIMTool.Client.WebApiClient.LoggingHandler.<SendAsync>d__1.MoveNext() in C:\Users\ThanhDat\OneDrive\Máy tính\PIM-Tool\PIM-Tool\PIMTool.Client\WebApiClient\LoggingHandler.cs:line 25
+System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:44331
+   at System.Net.Sockets.Socket.InternalEndConnect(IAsyncResult asyncResult)
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   at System.Net.Http.HttpClientHandler.GetResponseCallback(IAsyncResult ar)
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at PIMTool.Client.WebApiClient.LoggingHandler.<SendAsync>d__1.MoveNext() in C:\Users\ThanhDat\OneDrive\Máy tính\PIM-Tool\PIM-Tool\PIMTool.Client\WebApiClient\LoggingHandler.cs:line 25
+2021-06-02 10:25:50,374 [9      ] ERROR  Client                         | (null) | Error when sending request to server
+System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:44331
+   at System.Net.Sockets.Socket.InternalEndConnect(IAsyncResult asyncResult)
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   at System.Net.Http.HttpClientHandler.GetResponseCallback(IAsyncResult ar)
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at PIMTool.Client.WebApiClient.LoggingHandler.<SendAsync>d__1.MoveNext() in C:\Users\ThanhDat\OneDrive\Máy tính\PIM-Tool\PIM-Tool\PIMTool.Client\WebApiClient\LoggingHandler.cs:line 36
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at PIMTool.Client.WebApiClient.WebApiClientBase.<PerformWebClientAction>d__13.MoveNext() in C:\Users\ThanhDat\OneDrive\Máy tính\PIM-Tool\PIM-Tool\PIMTool.Client\WebApiClient\WebApiClientBase.cs:line 95
+2021-06-02 10:26:19,446 [3      ] DEBUG  Client                         | (null) | Request [GET] to url 'https://localhost:44334/api/project/GetProject/10'
+2021-06-02 10:26:19,541 [3      ] DEBUG  {PIMToolClient                 | (null) | Request: Method: GET, RequestUri: 'https://localhost:44334/api/project/GetProject/10', Version: 1.1, Content: <null>, Headers:
+{
+  Accept: application/json
+}
+2021-06-02 10:26:54,025 [3      ] DEBUG  Client                         | (null) | Request [GET] to url 'https://localhost:44334/api/project/GetProject/10'
+2021-06-02 10:26:54,094 [3      ] DEBUG  {PIMToolClient                 | (null) | Request: Method: GET, RequestUri: 'https://localhost:44334/api/project/GetProject/10', Version: 1.1, Content: <null>, Headers:
+{
+  Accept: application/json
+}
+2021-06-02 10:29:27,307 [3      ] DEBUG  Client                         | (null) | Request [GET] to url 'https://localhost:44334/api/project/GetProject/10'
+2021-06-02 10:29:27,383 [3      ] DEBUG  {PIMToolClient                 | (null) | Request: Method: GET, RequestUri: 'https://localhost:44334/api/project/GetProject/10', Version: 1.1, Content: <null>, Headers:
+{
+  Accept: application/json
+}
+2021-06-02 10:29:32,792 [9      ] DEBUG  {PIMToolClient                 | (null) | Response: StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.StreamContent, Headers:
+{
+  Pragma: no-cache
+  X-SourceFiles: =?UTF-8?B?QzpcVXNlcnNcVGhhbmhEYXRcT25lRHJpdmVcTcOheSB0w61uaFxQSU0tVG9vbFxQSU0tVG9vbFxQSU1Ub29sLlNlcnZpY2VzXGFwaVxwcm9qZWN0XEdldFByb2plY3RcMTA=?=
+  Cache-Control: no-cache
+  Date: Wed, 02 Jun 2021 03:29:32 GMT
+  Server: Microsoft-IIS/10.0
+  X-AspNet-Version: 4.0.30319
+  X-Powered-By: ASP.NET
+  Content-Length: 4
+  Content-Type: application/json; charset=utf-8
+  Expires: -1
+}
+2021-06-02 10:29:32,795 [9      ] DEBUG  {PIMToolClient                 | (null) | Response-Content: null
+2021-06-02 10:35:27,239 [3      ] DEBUG  Client                         | (null) | Request [GET] to url 'https://localhost:44334/api/project/GetProject/10'
+2021-06-02 10:35:27,297 [3      ] DEBUG  {PIMToolClient                 | (null) | Request: Method: GET, RequestUri: 'https://localhost:44334/api/project/GetProject/10', Version: 1.1, Content: <null>, Headers:
+{
+  Accept: application/json
+}
+2021-06-02 10:35:32,192 [10     ] DEBUG  {PIMToolClient                 | (null) | Response: StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.StreamContent, Headers:
+{
+  Pragma: no-cache
+  X-SourceFiles: =?UTF-8?B?QzpcVXNlcnNcVGhhbmhEYXRcT25lRHJpdmVcTcOheSB0w61uaFxQSU0tVG9vbFxQSU0tVG9vbFxQSU1Ub29sLlNlcnZpY2VzXGFwaVxwcm9qZWN0XEdldFByb2plY3RcMTA=?=
+  Cache-Control: no-cache
+  Date: Wed, 02 Jun 2021 03:35:32 GMT
+  Server: Microsoft-IIS/10.0
+  X-AspNet-Version: 4.0.30319
+  X-Powered-By: ASP.NET
+  Content-Length: 4
+  Content-Type: application/json; charset=utf-8
+  Expires: -1
+}
+2021-06-02 10:35:32,194 [10     ] DEBUG  {PIMToolClient                 | (null) | Response-Content: null
+2021-06-02 10:41:54,428 [3      ] DEBUG  Client                         | (null) | Request [GET] to url 'https://localhost:44334/api/project/GetProject/10'
+2021-06-02 10:41:54,492 [3      ] DEBUG  {PIMToolClient                 | (null) | Request: Method: GET, RequestUri: 'https://localhost:44334/api/project/GetProject/10', Version: 1.1, Content: <null>, Headers:
+{
+  Accept: application/json
+}
+2021-06-02 10:42:00,951 [10     ] DEBUG  {PIMToolClient                 | (null) | Response: StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.StreamContent, Headers:
+{
+  Pragma: no-cache
+  X-SourceFiles: =?UTF-8?B?QzpcVXNlcnNcVGhhbmhEYXRcT25lRHJpdmVcTcOheSB0w61uaFxQSU0tVG9vbFxQSU0tVG9vbFxQSU1Ub29sLlNlcnZpY2VzXGFwaVxwcm9qZWN0XEdldFByb2plY3RcMTA=?=
+  Cache-Control: no-cache
+  Date: Wed, 02 Jun 2021 03:42:00 GMT
+  Server: Microsoft-IIS/10.0
+  X-AspNet-Version: 4.0.30319
+  X-Powered-By: ASP.NET
+  Content-Length: 4
+  Content-Type: application/json; charset=utf-8
+  Expires: -1
+}
+2021-06-02 10:42:00,955 [10     ] DEBUG  {PIMToolClient                 | (null) | Response-Content: null
+2021-06-02 10:46:39,821 [3      ] DEBUG  Client                         | (null) | Request [GET] to url 'https://localhost:44334/api/project/GetProject/10'
+2021-06-02 10:46:39,896 [3      ] DEBUG  {PIMToolClient                 | (null) | Request: Method: GET, RequestUri: 'https://localhost:44334/api/project/GetProject/10', Version: 1.1, Content: <null>, Headers:
+{
+  Accept: application/json
+}
+2021-06-02 10:46:44,016 [12     ] DEBUG  {PIMToolClient                 | (null) | Response: StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.StreamContent, Headers:
+{
+  Pragma: no-cache
+  X-SourceFiles: =?UTF-8?B?QzpcVXNlcnNcVGhhbmhEYXRcT25lRHJpdmVcTcOheSB0w61uaFxQSU0tVG9vbFxQSU0tVG9vbFxQSU1Ub29sLlNlcnZpY2VzXGFwaVxwcm9qZWN0XEdldFByb2plY3RcMTA=?=
+  Cache-Control: no-cache
+  Date: Wed, 02 Jun 2021 03:46:44 GMT
+  Server: Microsoft-IIS/10.0
+  X-AspNet-Version: 4.0.30319
+  X-Powered-By: ASP.NET
+  Content-Length: 4
+  Content-Type: application/json; charset=utf-8
+  Expires: -1
+}
+2021-06-02 10:46:44,017 [12     ] DEBUG  {PIMToolClient                 | (null) | Response-Content: null
+2021-06-02 10:48:25,351 [3      ] DEBUG  Client                         | (null) | Request [GET] to url 'https://localhost:44334/api/project/GetProject/1'
+2021-06-02 10:48:25,403 [3      ] DEBUG  {PIMToolClient                 | (null) | Request: Method: GET, RequestUri: 'https://localhost:44334/api/project/GetProject/1', Version: 1.1, Content: <null>, Headers:
+{
+  Accept: application/json
+}
+2021-06-02 10:48:29,545 [10     ] DEBUG  {PIMToolClient                 | (null) | Response: StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.StreamContent, Headers:
+{
+  Pragma: no-cache
+  X-SourceFiles: =?UTF-8?B?QzpcVXNlcnNcVGhhbmhEYXRcT25lRHJpdmVcTcOheSB0w61uaFxQSU0tVG9vbFxQSU0tVG9vbFxQSU1Ub29sLlNlcnZpY2VzXGFwaVxwcm9qZWN0XEdldFByb2plY3RcMQ==?=
+  Cache-Control: no-cache
+  Date: Wed, 02 Jun 2021 03:48:29 GMT
+  Server: Microsoft-IIS/10.0
+  X-AspNet-Version: 4.0.30319
+  X-Powered-By: ASP.NET
+  Content-Length: 1198
+  Content-Type: application/json; charset=utf-8
+  Expires: -1
+}
+2021-06-02 10:48:29,547 [10     ] DEBUG  {PIMToolClient                 | (null) | Response-Content: {"Name":"PIM","ProjectNumber":123,"Customer":"Dat","Status":"New","StartDate":"1894-06-16T00:00:00","FinishDate":null,"Task":[],"Employees":[],"Group":{"_proxyFactoryInfo":{"_entityName":"PIMTool.Services.Service.Entities.GroupEntity","_persistentClass":"PIMTool.Services.Service.Entities.GroupEntity, PIMTool.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null","_interfaces":["NHibernate.Proxy.INHibernateProxy, NHibernate, Version=5.2.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4"],"_getIdentifierMethod":{"Name":"get_Id","AssemblyName":"PIMTool.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null","ClassName":"PIMTool.Services.Service.Entities.GroupEntity","Signature":"Int32 get_Id()","Signature2":"System.Int32 get_Id()","MemberType":8,"GenericArguments":null},"_setIdentifierMethod":{"Name":"set_Id","AssemblyName":"PIMTool.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null","ClassName":"PIMTool.Services.Service.Entities.GroupEntity","Signature":"Void set_Id(Int32)","Signature2":"System.Void set_Id(System.Int32)","MemberType":8,"GenericArguments":null},"_componentIdType":null},"_identifier":1,"_implementation":null},"Id":1,"RowVersion":1}
+2021-06-02 10:49:18,468 [3      ] DEBUG  Client                         | (null) | Request [GET] to url 'https://localhost:44334/api/project/GetProject/1'
+2021-06-02 10:49:18,514 [3      ] DEBUG  {PIMToolClient                 | (null) | Request: Method: GET, RequestUri: 'https://localhost:44334/api/project/GetProject/1', Version: 1.1, Content: <null>, Headers:
+{
+  Accept: application/json
+}
+2021-06-02 10:49:25,231 [9      ] DEBUG  {PIMToolClient                 | (null) | Response: StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.StreamContent, Headers:
+{
+  Pragma: no-cache
+  X-SourceFiles: =?UTF-8?B?QzpcVXNlcnNcVGhhbmhEYXRcT25lRHJpdmVcTcOheSB0w61uaFxQSU0tVG9vbFxQSU0tVG9vbFxQSU1Ub29sLlNlcnZpY2VzXGFwaVxwcm9qZWN0XEdldFByb2plY3RcMQ==?=
+  Cache-Control: no-cache
+  Date: Wed, 02 Jun 2021 03:49:25 GMT
+  Server: Microsoft-IIS/10.0
+  X-AspNet-Version: 4.0.30319
+  X-Powered-By: ASP.NET
+  Content-Length: 1198
+  Content-Type: application/json; charset=utf-8
+  Expires: -1
+}
+2021-06-02 10:49:25,234 [9      ] DEBUG  {PIMToolClient                 | (null) | Response-Content: {"Name":"PIM","ProjectNumber":123,"Customer":"Dat","Status":"New","StartDate":"1894-06-16T00:00:00","FinishDate":null,"Task":[],"Employees":[],"Group":{"_proxyFactoryInfo":{"_entityName":"PIMTool.Services.Service.Entities.GroupEntity","_persistentClass":"PIMTool.Services.Service.Entities.GroupEntity, PIMTool.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null","_interfaces":["NHibernate.Proxy.INHibernateProxy, NHibernate, Version=5.2.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4"],"_getIdentifierMethod":{"Name":"get_Id","AssemblyName":"PIMTool.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null","ClassName":"PIMTool.Services.Service.Entities.GroupEntity","Signature":"Int32 get_Id()","Signature2":"System.Int32 get_Id()","MemberType":8,"GenericArguments":null},"_setIdentifierMethod":{"Name":"set_Id","AssemblyName":"PIMTool.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null","ClassName":"PIMTool.Services.Service.Entities.GroupEntity","Signature":"Void set_Id(Int32)","Signature2":"System.Void set_Id(System.Int32)","MemberType":8,"GenericArguments":null},"_componentIdType":null},"_identifier":1,"_implementation":null},"Id":1,"RowVersion":1}
+2021-06-02 14:17:16,911 [3      ] DEBUG  Client                         | (null) | Request [GET] to url 'https://localhost:44334/api/project/GetProject/1'
+2021-06-02 14:17:16,945 [3      ] DEBUG  {PIMToolClient                 | (null) | Request: Method: GET, RequestUri: 'https://localhost:44334/api/project/GetProject/1', Version: 1.1, Content: <null>, Headers:
+{
+  Accept: application/json
+}
+2021-06-02 14:17:21,085 [10     ] ERROR  {PIMToolClient                 | (null) | Failed to get response: System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:44334
+   at System.Net.Sockets.Socket.InternalEndConnect(IAsyncResult asyncResult)
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   at System.Net.Http.HttpClientHandler.GetResponseCallback(IAsyncResult ar)
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at PIMTool.Client.WebApiClient.LoggingHandler.<SendAsync>d__1.MoveNext() in C:\Users\ThanhDat\OneDrive\Máy tính\PIM-Tool\PIM-Tool\PIMTool.Client\WebApiClient\LoggingHandler.cs:line 25
+System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:44334
+   at System.Net.Sockets.Socket.InternalEndConnect(IAsyncResult asyncResult)
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   at System.Net.Http.HttpClientHandler.GetResponseCallback(IAsyncResult ar)
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at PIMTool.Client.WebApiClient.LoggingHandler.<SendAsync>d__1.MoveNext() in C:\Users\ThanhDat\OneDrive\Máy tính\PIM-Tool\PIM-Tool\PIMTool.Client\WebApiClient\LoggingHandler.cs:line 25
+2021-06-02 14:17:21,112 [10     ] ERROR  Client                         | (null) | Error when sending request to server
+System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:44334
+   at System.Net.Sockets.Socket.InternalEndConnect(IAsyncResult asyncResult)
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   at System.Net.Http.HttpClientHandler.GetResponseCallback(IAsyncResult ar)
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at PIMTool.Client.WebApiClient.LoggingHandler.<SendAsync>d__1.MoveNext() in C:\Users\ThanhDat\OneDrive\Máy tính\PIM-Tool\PIM-Tool\PIMTool.Client\WebApiClient\LoggingHandler.cs:line 36
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at PIMTool.Client.WebApiClient.WebApiClientBase.<PerformWebClientAction>d__13.MoveNext() in C:\Users\ThanhDat\OneDrive\Máy tính\PIM-Tool\PIM-Tool\PIMTool.Client\WebApiClient\WebApiClientBase.cs:line 95

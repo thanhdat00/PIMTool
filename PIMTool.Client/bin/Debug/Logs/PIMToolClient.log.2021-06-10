@@ -1,0 +1,148 @@
+2021-06-10 20:20:57,363 [3      ] DEBUG  Client                         | (null) | Request [POST] to url 'https://localhost:44334/api/project/AddProject' with data 'PIMTool.Services.Resource.SaveProjectResource'
+2021-06-10 20:20:57,415 [3      ] DEBUG  {PIMToolClient                 | (null) | Request: Method: POST, RequestUri: 'https://localhost:44334/api/project/AddProject', Version: 1.1, Content: System.Net.Http.StringContent, Headers:
+{
+  Accept: application/json
+  Content-Type: application/json; charset=utf-8
+}
+2021-06-10 20:20:57,418 [4      ] DEBUG  {PIMToolClient                 | (null) | Request-Content: {"$id":"1","$type":"PIMTool.Services.Resource.SaveProjectResource, PIMTool.Services","GroupId":1,"ProjectNumber":1234,"Name":"aaaa","Customer":"dattt","Status":"NEW","StartDate":"0001-01-01T00:00:00","FinishDate":null,"Id":0,"RowVersion":0}
+2021-06-10 20:21:01,542 [14     ] ERROR  {PIMToolClient                 | (null) | Failed to get response: System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:44334
+   at System.Net.Sockets.Socket.InternalEndConnect(IAsyncResult asyncResult)
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.EndGetRequestStream(IAsyncResult asyncResult, TransportContext& context)
+   at System.Net.Http.HttpClientHandler.GetRequestStreamCallback(IAsyncResult ar)
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at PIMTool.Client.WebApiClient.LoggingHandler.<SendAsync>d__1.MoveNext() in C:\Users\ThanhDat\OneDrive\Máy tính\PIM-Tool\PIM-Tool\PIMTool.Client\WebApiClient\LoggingHandler.cs:line 25
+System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:44334
+   at System.Net.Sockets.Socket.InternalEndConnect(IAsyncResult asyncResult)
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.EndGetRequestStream(IAsyncResult asyncResult, TransportContext& context)
+   at System.Net.Http.HttpClientHandler.GetRequestStreamCallback(IAsyncResult ar)
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at PIMTool.Client.WebApiClient.LoggingHandler.<SendAsync>d__1.MoveNext() in C:\Users\ThanhDat\OneDrive\Máy tính\PIM-Tool\PIM-Tool\PIMTool.Client\WebApiClient\LoggingHandler.cs:line 25
+2021-06-10 20:21:01,570 [14     ] ERROR  Client                         | (null) | Error when sending request to server
+System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:44334
+   at System.Net.Sockets.Socket.InternalEndConnect(IAsyncResult asyncResult)
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.EndGetRequestStream(IAsyncResult asyncResult, TransportContext& context)
+   at System.Net.Http.HttpClientHandler.GetRequestStreamCallback(IAsyncResult ar)
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at PIMTool.Client.WebApiClient.LoggingHandler.<SendAsync>d__1.MoveNext() in C:\Users\ThanhDat\OneDrive\Máy tính\PIM-Tool\PIM-Tool\PIMTool.Client\WebApiClient\LoggingHandler.cs:line 36
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at PIMTool.Client.WebApiClient.WebApiClientBase.<PerformWebClientAction>d__13.MoveNext() in C:\Users\ThanhDat\OneDrive\Máy tính\PIM-Tool\PIM-Tool\PIMTool.Client\WebApiClient\WebApiClientBase.cs:line 95
+2021-06-10 20:31:05,027 [12     ] DEBUG  Client                         | (null) | Request [POST] to url 'https://localhost:44334/api/project/AddProject' with data 'PIMTool.Services.Resource.SaveProjectResource'
+2021-06-10 20:31:05,086 [12     ] DEBUG  {PIMToolClient                 | (null) | Request: Method: POST, RequestUri: 'https://localhost:44334/api/project/AddProject', Version: 1.1, Content: System.Net.Http.StringContent, Headers:
+{
+  Accept: application/json
+  Content-Type: application/json; charset=utf-8
+}
+2021-06-10 20:31:05,089 [3      ] DEBUG  {PIMToolClient                 | (null) | Request-Content: {"$id":"1","$type":"PIMTool.Services.Resource.SaveProjectResource, PIMTool.Services","GroupId":1,"ProjectNumber":1234,"Name":"aaa","Customer":"dat","Status":"FIN","StartDate":"0001-01-03T00:00:00","FinishDate":null}
+2021-06-10 20:31:09,184 [17     ] ERROR  {PIMToolClient                 | (null) | Failed to get response: System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:44334
+   at System.Net.Sockets.Socket.InternalEndConnect(IAsyncResult asyncResult)
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.EndGetRequestStream(IAsyncResult asyncResult, TransportContext& context)
+   at System.Net.Http.HttpClientHandler.GetRequestStreamCallback(IAsyncResult ar)
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at PIMTool.Client.WebApiClient.LoggingHandler.<SendAsync>d__1.MoveNext() in C:\Users\ThanhDat\OneDrive\Máy tính\PIM-Tool\PIM-Tool\PIMTool.Client\WebApiClient\LoggingHandler.cs:line 25
+System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:44334
+   at System.Net.Sockets.Socket.InternalEndConnect(IAsyncResult asyncResult)
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.EndGetRequestStream(IAsyncResult asyncResult, TransportContext& context)
+   at System.Net.Http.HttpClientHandler.GetRequestStreamCallback(IAsyncResult ar)
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at PIMTool.Client.WebApiClient.LoggingHandler.<SendAsync>d__1.MoveNext() in C:\Users\ThanhDat\OneDrive\Máy tính\PIM-Tool\PIM-Tool\PIMTool.Client\WebApiClient\LoggingHandler.cs:line 25
+2021-06-10 20:31:09,210 [17     ] ERROR  Client                         | (null) | Error when sending request to server
+System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:44334
+   at System.Net.Sockets.Socket.InternalEndConnect(IAsyncResult asyncResult)
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.EndGetRequestStream(IAsyncResult asyncResult, TransportContext& context)
+   at System.Net.Http.HttpClientHandler.GetRequestStreamCallback(IAsyncResult ar)
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at PIMTool.Client.WebApiClient.LoggingHandler.<SendAsync>d__1.MoveNext() in C:\Users\ThanhDat\OneDrive\Máy tính\PIM-Tool\PIM-Tool\PIMTool.Client\WebApiClient\LoggingHandler.cs:line 36
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at PIMTool.Client.WebApiClient.WebApiClientBase.<PerformWebClientAction>d__13.MoveNext() in C:\Users\ThanhDat\OneDrive\Máy tính\PIM-Tool\PIM-Tool\PIMTool.Client\WebApiClient\WebApiClientBase.cs:line 95
+2021-06-10 20:40:38,829 [4      ] DEBUG  Client                         | (null) | Request [POST] to url 'https://localhost:44334/api/project/AddProject' with data 'PIMTool.Services.Resource.SaveProjectResource'
+2021-06-10 20:41:49,154 [4      ] DEBUG  {PIMToolClient                 | (null) | Request: Method: POST, RequestUri: 'https://localhost:44334/api/project/AddProject', Version: 1.1, Content: System.Net.Http.StringContent, Headers:
+{
+  Accept: application/json
+  Content-Type: application/json; charset=utf-8
+  Content-Length: 216
+}
+2021-06-10 20:41:49,159 [12     ] DEBUG  {PIMToolClient                 | (null) | Request-Content: {"$id":"1","$type":"PIMTool.Services.Resource.SaveProjectResource, PIMTool.Services","GroupId":1,"ProjectNumber":1234,"Name":"aaaa","Customer":"dat","Status":"FIN","StartDate":"0001-01-01T00:00:00","FinishDate":null}
+2021-06-10 20:41:53,276 [18     ] ERROR  {PIMToolClient                 | (null) | Failed to get response: System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:44334
+   at System.Net.Sockets.Socket.InternalEndConnect(IAsyncResult asyncResult)
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.EndGetRequestStream(IAsyncResult asyncResult, TransportContext& context)
+   at System.Net.Http.HttpClientHandler.GetRequestStreamCallback(IAsyncResult ar)
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at PIMTool.Client.WebApiClient.LoggingHandler.<SendAsync>d__1.MoveNext() in C:\Users\ThanhDat\OneDrive\Máy tính\PIM-Tool\PIM-Tool\PIMTool.Client\WebApiClient\LoggingHandler.cs:line 25
+System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:44334
+   at System.Net.Sockets.Socket.InternalEndConnect(IAsyncResult asyncResult)
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.EndGetRequestStream(IAsyncResult asyncResult, TransportContext& context)
+   at System.Net.Http.HttpClientHandler.GetRequestStreamCallback(IAsyncResult ar)
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at PIMTool.Client.WebApiClient.LoggingHandler.<SendAsync>d__1.MoveNext() in C:\Users\ThanhDat\OneDrive\Máy tính\PIM-Tool\PIM-Tool\PIMTool.Client\WebApiClient\LoggingHandler.cs:line 25
+2021-06-10 20:41:53,304 [18     ] ERROR  Client                         | (null) | Error when sending request to server
+System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:44334
+   at System.Net.Sockets.Socket.InternalEndConnect(IAsyncResult asyncResult)
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.EndGetRequestStream(IAsyncResult asyncResult, TransportContext& context)
+   at System.Net.Http.HttpClientHandler.GetRequestStreamCallback(IAsyncResult ar)
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at PIMTool.Client.WebApiClient.LoggingHandler.<SendAsync>d__1.MoveNext() in C:\Users\ThanhDat\OneDrive\Máy tính\PIM-Tool\PIM-Tool\PIMTool.Client\WebApiClient\LoggingHandler.cs:line 36
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at PIMTool.Client.WebApiClient.WebApiClientBase.<PerformWebClientAction>d__13.MoveNext() in C:\Users\ThanhDat\OneDrive\Máy tính\PIM-Tool\PIM-Tool\PIMTool.Client\WebApiClient\WebApiClientBase.cs:line 95

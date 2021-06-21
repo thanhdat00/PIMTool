@@ -10,22 +10,54 @@ namespace PIMTool.Test
     {
         public IUnitOfWorkProvider UnitOfWorkProvider { get; set; }
         public IProjectRepository ProjectRepository { get; set; }
+        public IEmployeeRepository EmployeeRepository { get; set; }
+        public IGroupRepository GroupRepository { get; set; }
+        public ITaskAudRepository TaskAudRepository { get; set; }
 
-        public ProjectDataGenerator(IUnitOfWorkProvider unitOfWorkProvider, IProjectRepository projectRepository)
+        public ProjectDataGenerator(IUnitOfWorkProvider unitOfWorkProvider, IProjectRepository projectRepository, 
+            IEmployeeRepository employeeRepository, IGroupRepository groupRepository, ITaskAudRepository taskAudRepository)
         {
             UnitOfWorkProvider = unitOfWorkProvider;
             ProjectRepository = projectRepository;
+            EmployeeRepository = employeeRepository;
+            GroupRepository = groupRepository;
+            TaskAudRepository = taskAudRepository;
         }
 
-        public ProjectEntity InitProject(string projectName)
+        public EmployeeEntity InitEmployee()
         {
+            EmployeeEntity res; 
+            using (var scope = UnitOfWorkProvider.Provide())
+            {
+                res = EmployeeRepository.GetById(1);
+                scope.Complete();
+            }
+            return res;
+        }
+
+        public GroupEntity InitGroup()
+        {
+            GroupEntity res;
+            using (var scope = UnitOfWorkProvider.Provide())
+            {
+                res = GroupRepository.GetById(1);
+                scope.Complete();
+            }
+            return res;
+        }
+
+        public ProjectEntity InitProject(string projectName,int count)
+        {
+            GroupEntity mockGroup = InitGroup();
             return new ProjectEntity()
             {
-
+                GroupId = 1,
+                ProjectNumber = 119 + count,
                 Name = projectName,
                 FinishDate = null,
-                StartDate = DateTime.Now.AddYears(-1)
-
+                StartDate = DateTime.Now.AddYears(-1),
+                Customer = "ThanhDat",
+                Status = "New",
             };
         }
 
@@ -47,12 +79,16 @@ namespace PIMTool.Test
             {
                 Name = task.Name,
                 ProjectId = task.Project.Id,
-                RowVersion = task.RowVersion,
+                TaskId = task.Id,
                 DeadlineDate = task.DeadlineDate,
                 Action = action,
-                TaskId = task.Id
-
             };
+            using (var scope = UnitOfWorkProvider.Provide())
+            {
+                TaskAudRepository.Add(newTaskAud);
+                scope.Complete();
+            }
+            
             return newTaskAud;
         }
 
@@ -86,7 +122,7 @@ namespace PIMTool.Test
             TaskAudEntity result;
             using (var scope = UnitOfWorkProvider.Provide())
             {
-                result = ProjectRepository.GetOtherById<TaskAudEntity>(id);
+                result = TaskAudRepository.GetById(id);
 
                 Assert.IsTrue(result.Id > 0);
 
@@ -113,7 +149,7 @@ namespace PIMTool.Test
 
             using (var scope = UnitOfWorkProvider.Provide())
             {
-                task = ProjectRepository.MergeOther(task);
+                task = TaskAudRepository.Merge(task);
 
                 Assert.IsTrue(task.Id > 0);
 

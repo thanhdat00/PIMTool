@@ -35,21 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Ninject, Version=4.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.4.0.0-beta-0134\lib\net45\Ninject.dll</HintPath>
-    </Reference>
-    <Reference Include="Ninject.Extensions.Interception, Version=3.3.5.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.Extensions.Interception.3.3.5\lib\net45\Ninject.Extensions.Interception.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -69,10 +58,34 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DependencyInjection\ClientBindingModule.cs" />
-    <Compile Include="Presentation\ProjectView.xaml.cs">
-      <DependentUpon>ProjectView.xaml</DependentUpon>
+    <Compile Include="Dictionary\StatusDictionary.cs" />
+    <Compile Include="Models\ProjectModel.cs" />
+    <Compile Include="Presentation\Commands\CreateProjectCommand.cs" />
+    <Compile Include="Presentation\Commands\DeleteProjectCommand.cs" />
+    <Compile Include="Presentation\Commands\ResetSearchCommand.cs" />
+    <Compile Include="Presentation\Commands\SearchCommand.cs" />
+    <Compile Include="Presentation\Commands\UpdateProjectCommand.cs" />
+    <Compile Include="Presentation\Commands\UpdateViewCommand.cs" />
+    <Compile Include="Presentation\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\ProjectViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\BaseViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\CreateProjectViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\EditProjectViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\MainViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ProjectListViewModel.cs" />
+    <Compile Include="Presentation\Views\CreateProjectView.xaml.cs">
+      <DependentUpon>CreateProjectView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\EditProjectView.xaml.cs">
+      <DependentUpon>EditProjectView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ProjectListView.xaml.cs">
+      <DependentUpon>ProjectListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Validation\EditProjectValidator.cs" />
+    <Compile Include="Validation\ProjectValidator.cs" />
+    <Compile Include="Validation\ValidationConstant.cs" />
     <Compile Include="WebApiClient\HttpClientFactory.cs" />
     <Compile Include="WebApiClient\IHttpClientFactory.cs" />
     <Compile Include="WebApiClient\LoggingHandler.cs" />
@@ -83,10 +96,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Presentation\ProjectView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -106,7 +115,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -120,7 +128,55 @@
       <Project>{4e0fa7fe-dfb0-4324-8921-3055417cb2a1}</Project>
       <Name>PIMTool.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PIMTool.Services\PIMTool.Services.csproj">
+      <Project>{56649A9E-2780-469B-87C5-398A354E4D04}</Project>
+      <Name>PIMTool.Services</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Page Include="Presentation\CustomTemplate\ButtonTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\CreateProjectView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\EditProjectView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ProjectListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FluentValidation">
+      <Version>10.2.3</Version>
+    </PackageReference>
+    <PackageReference Include="log4net">
+      <Version>2.0.8</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="Ninject">
+      <Version>3.3.4</Version>
+    </PackageReference>
+    <PackageReference Include="Ninject.Extensions.Interception">
+      <Version>3.3.5</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\logo_elca.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\delete_icon.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

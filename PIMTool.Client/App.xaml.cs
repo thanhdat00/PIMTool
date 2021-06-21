@@ -8,6 +8,7 @@ using System.Windows;
 using Ninject;
 using PIMTool.Client.DependencyInjection;
 using PIMTool.Client.Presentation;
+using PIMTool.Client.Presentation.ViewModels;
 using PIMTool.Common;
 using PIMTool.Common.BusinessObjects;
 
@@ -32,8 +33,8 @@ namespace PIMTool.Client
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            var window = new ProjectView();
-            window.DataContext = IoC.Get<ProjectViewModel>();
+            var window = new MainWindow();
+            window.DataContext = IoC.Get<MainViewModel>();
             window.Show();
         }
     }

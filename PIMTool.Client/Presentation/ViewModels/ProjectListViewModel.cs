@@ -20,9 +20,25 @@ namespace PIMTool.Client.Presentation.ViewModels
         private int _statusFilter = -1;
         private List<ProjectModel> ProjectList = new List<ProjectModel>();     
         public ICollectionView ProjectCollectionView { get; }
-        public StatusDictionary StatusDic = new StatusDictionary();         
-        public ICommand SearchCommand { get; set; }
-        public ICommand ResetSearchCommand { get; set; }
+        public StatusDictionary StatusDic = new StatusDictionary();
+        private ICommand _searchCommand;
+        private ICommand _resetSearchCommand;
+
+        public ICommand SearchCommand
+        {
+            get
+            {
+                return _searchCommand ?? (_searchCommand = new CommandHandler(() => HandleSearchProject(), () => { return true; }));
+            }
+        }
+
+        public ICommand ResetSearchCommand
+        {
+            get
+            {
+                return _resetSearchCommand ?? (_resetSearchCommand = new CommandHandler(() => HandleResetSearch(), () => { return true; }));
+            }
+        }
         public int SelectedProjectItemIndex
         {
             get { return _selectedProjectItemIndex; }
@@ -55,8 +71,6 @@ namespace PIMTool.Client.Presentation.ViewModels
         {
             _mainViewModel = mainViewModel;
             _projectWebApiClient = _mainViewModel.ProjectWebApiClient;
-            SearchCommand = new SearchCommand(HandleSearchProject);
-            ResetSearchCommand = new ResetSearchCommand(HandleResetSearch);
             foreach (var item in _mainViewModel.Projects)
             {
                 ProjectList.Add(new ProjectModel(item, new DeleteProjectCommand(HandleDeleteProject)));
@@ -69,7 +83,7 @@ namespace PIMTool.Client.Presentation.ViewModels
                                                         ListSortDirection.Ascending));
         }
         
-        //TODO: Handle event when click the delete button
+        //Handle event when click the delete button
         private void HandleDeleteProject(object obj)
         {
             int projectNumber = (int)obj;
@@ -84,14 +98,14 @@ namespace PIMTool.Client.Presentation.ViewModels
             _projectWebApiClient.DeleteProject(projectNumber);           
         }
 
-        //TODO: Handle event when click the reset button
+        //Handle event when click the reset button
         private void HandleResetSearch()
         {
             StatusFilter = -1;
             ProjectCollectionView.Filter = FilterProject;
         }
 
-        //TODO: Handle event when click to search project
+        //Handle event when click to search project
         private void HandleSearchProject()
         {
             if (StatusFilter > -1 )
@@ -100,7 +114,7 @@ namespace PIMTool.Client.Presentation.ViewModels
             }
         }
 
-        //TODO: Filter engine for searching by status
+        //Filter engine for searching by status
         private bool FilterProjectByStatus(object obj)
         {
             if (obj is ProjectModel project)
@@ -113,7 +127,7 @@ namespace PIMTool.Client.Presentation.ViewModels
             return false;
         }
 
-        //TODO: Handle evenet when click to any item in projectlist
+        //Handle evenet when click to any item in projectlist
         private void HandleSelectProject()
         {            
             if (SelectedProjectItemIndex == -1) return;
@@ -128,13 +142,13 @@ namespace PIMTool.Client.Presentation.ViewModels
                     break;
                 }
             }
-            EditProjectViewModel viewModel = new EditProjectViewModel(_mainViewModel, project.Project);
+            DetailProjectViewModel viewModel = new DetailProjectViewModel(_mainViewModel, true, project.Project);
             _mainViewModel.EditProjectSelected = true;
             _mainViewModel.SelectedViewModel = viewModel;
             SelectedProjectItemIndex = -1;
         }
 
-        //TODO: Fiter engine
+        //Fiter engine
         private bool FilterProject(object obj)
         {
             if (obj is ProjectModel project)

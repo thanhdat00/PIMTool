@@ -6,7 +6,7 @@ namespace PIMTool.Services.Service.Repository
 {
     public class ProjectRepository : BaseRepository<ProjectEntity>, IProjectRepository
     {
-        //TODO: Find the project which will be updated
+        // Find the project which will be updated
         public ProjectEntity UpdateProject(int projectNumber)
         {
             ProjectEntity res = Session.QueryOver<ProjectEntity>()
@@ -14,7 +14,7 @@ namespace PIMTool.Services.Service.Repository
             return res;
         }
 
-        //TODO: Create a ProjectEntity from a SaveProjectResource
+        // Create a ProjectEntity from a SaveProjectResource
         public ProjectEntity NewProject(SaveProjectResource project)
         {
             var result = new ProjectEntity();

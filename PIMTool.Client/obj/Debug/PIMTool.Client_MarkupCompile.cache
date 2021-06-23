@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\ThanhDat\Downloads\DOH_PIMTool\src\PIMTool.Client\App.xaml
-5-372307808
+4278952668
 
-32687585215
+31909379956
 128-720562364
-Presentation\CustomTemplate\ButtonTemplate.xaml;Presentation\MainWindow.xaml;Presentation\Views\CreateProjectView.xaml;Presentation\Views\EditProjectView.xaml;Presentation\Views\ProjectListView.xaml;
+Presentation\CustomTemplate\ButtonTemplate.xaml;Presentation\MainWindow.xaml;Presentation\Views\DetailProjectView.xaml;Presentation\Views\ProjectListView.xaml;
 
-True
+False
 

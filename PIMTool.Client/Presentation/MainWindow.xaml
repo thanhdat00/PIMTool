@@ -89,14 +89,11 @@
 
             <ContentControl Grid.Column="1" Content="{Binding SelectedViewModel}">
                 <ContentControl.Resources>
-                    <DataTemplate DataType="{x:Type viewmodels:CreateProjectViewModel}">
-                        <views:CreateProjectView/>
-                    </DataTemplate>
                     <DataTemplate DataType="{x:Type viewmodels:ProjectListViewModel}">
                         <views:ProjectListView />
                     </DataTemplate>
-                    <DataTemplate DataType="{x:Type viewmodels:EditProjectViewModel}">
-                        <views:EditProjectView />
+                    <DataTemplate DataType="{x:Type viewmodels:DetailProjectViewModel}">
+                        <views:DetailProjectView/>
                     </DataTemplate>
                 </ContentControl.Resources>
             </ContentControl>

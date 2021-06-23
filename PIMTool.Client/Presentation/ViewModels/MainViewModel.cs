@@ -1,6 +1,7 @@
 ﻿using PIMTool.Client.Presentation.Commands;
 using PIMTool.Client.WebApiClient.Services;
 using PIMTool.Services.Resource;
+using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 
@@ -12,11 +13,12 @@ namespace PIMTool.Client.Presentation.ViewModels
         private bool _projectListSelected = true;
         private bool _createProjectSelected = false;
         private bool _editProjectSelected = false;
+        private ICommand _updateViewCommand;
 
         public readonly IProjectWebApiClient ProjectWebApiClient;
-        public ICommand UpdateViewCommand { get; set; }
         public List<ProjectResource> Projects { get; private set; }
         public ProjectResource SelectedProject { get; set; }
+
         #region Getter Setter
         public bool EditProjectSelected
         {
@@ -59,15 +61,37 @@ namespace PIMTool.Client.Presentation.ViewModels
             }
         }
         #endregion
+        public ICommand UpdateViewCommand
+        {
+            get
+            {
+                return _updateViewCommand ?? (_updateViewCommand = new CommandHandler(() => HandleUpdateView(), () => CanUpdateView()));
+            }
+        }
+
+        public bool CanUpdateView()
+        {
+            return true;
+        }
+
+        public void HandleUpdateView()
+        {
+            if (ProjectListSelected)
+                SelectedViewModel = new ProjectListViewModel(this);
+            else if (CreateProjectSelected)
+                SelectedViewModel = new DetailProjectViewModel(this,false);
+            else if (EditProjectSelected)
+                SelectedViewModel = new DetailProjectViewModel(this,true,this.SelectedProject);
+        }
+
         public MainViewModel(IProjectWebApiClient projectWebApiClient)
         {
             ProjectWebApiClient = projectWebApiClient;
             Projects = projectWebApiClient.GetAllProjects();
             SelectedViewModel = new ProjectListViewModel(this);
-            UpdateViewCommand = new UpdateViewCommand(this);
         }
 
-        //TODO: Reset Project List when something update
+        //Reset Project List when something update in DB
         public void ResetAllProject()
         {
             Projects = ProjectWebApiClient.GetAllProjects();

@@ -24,6 +24,7 @@ namespace PIMTool.Services.Service.Map
             Property(x => x.ProjectNumber);
             Property(x => x.Customer);
             Property(x => x.Status);
+
             Property(x => x.StartDate, m =>
             {
                 m.Column("StartDate");

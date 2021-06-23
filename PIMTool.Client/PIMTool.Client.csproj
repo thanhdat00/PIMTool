@@ -58,33 +58,31 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DependencyInjection\ClientBindingModule.cs" />
+    <Compile Include="Dictionary\EStatusType.cs" />
     <Compile Include="Dictionary\StatusDictionary.cs" />
+    <Compile Include="Extension\EnumHelper.cs" />
+    <Compile Include="Extension\EnumToCollectionConverter.cs" />
+    <Compile Include="Extension\ValueDescription.cs" />
     <Compile Include="Models\ProjectModel.cs" />
-    <Compile Include="Presentation\Commands\CreateProjectCommand.cs" />
+    <Compile Include="Presentation\Commands\CommandHandler.cs" />
     <Compile Include="Presentation\Commands\DeleteProjectCommand.cs" />
     <Compile Include="Presentation\Commands\ResetSearchCommand.cs" />
     <Compile Include="Presentation\Commands\SearchCommand.cs" />
     <Compile Include="Presentation\Commands\UpdateProjectCommand.cs" />
-    <Compile Include="Presentation\Commands\UpdateViewCommand.cs" />
     <Compile Include="Presentation\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\ViewModels\BaseViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\CreateProjectViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\EditProjectViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\DetailProjectViewModel.cs" />
     <Compile Include="Presentation\ViewModels\MainViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ProjectListViewModel.cs" />
-    <Compile Include="Presentation\Views\CreateProjectView.xaml.cs">
-      <DependentUpon>CreateProjectView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Presentation\Views\EditProjectView.xaml.cs">
-      <DependentUpon>EditProjectView.xaml</DependentUpon>
+    <Compile Include="Presentation\Views\DetailProjectView.xaml.cs">
+      <DependentUpon>DetailProjectView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\Views\ProjectListView.xaml.cs">
       <DependentUpon>ProjectListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Validation\EditProjectValidator.cs" />
-    <Compile Include="Validation\ProjectValidator.cs" />
+    <Compile Include="Validation\DetailProjectValidator.cs" />
     <Compile Include="Validation\ValidationConstant.cs" />
     <Compile Include="WebApiClient\HttpClientFactory.cs" />
     <Compile Include="WebApiClient\IHttpClientFactory.cs" />
@@ -142,11 +140,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Presentation\Views\CreateProjectView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Presentation\Views\EditProjectView.xaml">
+    <Page Include="Presentation\Views\DetailProjectView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

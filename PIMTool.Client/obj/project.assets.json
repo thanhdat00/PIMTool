@@ -417,11 +417,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ThanhDat\\OneDrive\\Máy tính\\PIM-Tool\\PIM-Tool\\PIMTool.Client\\PIMTool.Client.csproj",
+      "projectUniqueName": "C:\\Users\\ThanhDat\\Downloads\\DOH_PIMTool\\src\\PIMTool.Client\\PIMTool.Client.csproj",
       "projectName": "PIMTool.Client",
-      "projectPath": "C:\\Users\\ThanhDat\\OneDrive\\Máy tính\\PIM-Tool\\PIM-Tool\\PIMTool.Client\\PIMTool.Client.csproj",
+      "projectPath": "C:\\Users\\ThanhDat\\Downloads\\DOH_PIMTool\\src\\PIMTool.Client\\PIMTool.Client.csproj",
       "packagesPath": "C:\\Users\\ThanhDat\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ThanhDat\\OneDrive\\Máy tính\\PIM-Tool\\PIM-Tool\\PIMTool.Client\\obj\\",
+      "outputPath": "C:\\Users\\ThanhDat\\Downloads\\DOH_PIMTool\\src\\PIMTool.Client\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
@@ -438,11 +438,11 @@
       "frameworks": {
         "net461": {
           "projectReferences": {
-            "C:\\Users\\ThanhDat\\OneDrive\\Máy tính\\PIM-Tool\\PIM-Tool\\PIMTool.Common\\PIMTool.Common.csproj": {
-              "projectPath": "C:\\Users\\ThanhDat\\OneDrive\\Máy tính\\PIM-Tool\\PIM-Tool\\PIMTool.Common\\PIMTool.Common.csproj"
+            "C:\\Users\\ThanhDat\\Downloads\\DOH_PIMTool\\src\\PIMTool.Common\\PIMTool.Common.csproj": {
+              "projectPath": "C:\\Users\\ThanhDat\\Downloads\\DOH_PIMTool\\src\\PIMTool.Common\\PIMTool.Common.csproj"
             },
-            "C:\\Users\\ThanhDat\\OneDrive\\Máy tính\\PIM-Tool\\PIM-Tool\\PIMTool.Services\\PIMTool.Services.csproj": {
-              "projectPath": "C:\\Users\\ThanhDat\\OneDrive\\Máy tính\\PIM-Tool\\PIM-Tool\\PIMTool.Services\\PIMTool.Services.csproj"
+            "C:\\Users\\ThanhDat\\Downloads\\DOH_PIMTool\\src\\PIMTool.Services\\PIMTool.Services.csproj": {
+              "projectPath": "C:\\Users\\ThanhDat\\Downloads\\DOH_PIMTool\\src\\PIMTool.Services\\PIMTool.Services.csproj"
             }
           }
         }

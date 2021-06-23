@@ -66,7 +66,7 @@ namespace PIMTool.Services.Service
             }
         }
 
-        //TODO: Delete a project using project number
+        // Delete a project using project number
         public ProjectResponse DeleteByProjectNumber(int value)
         {
             using (var scope = _unitOfWorkProvider.Provide())

@@ -66,9 +66,6 @@
     <Compile Include="Models\ProjectModel.cs" />
     <Compile Include="Presentation\Commands\CommandHandler.cs" />
     <Compile Include="Presentation\Commands\DeleteProjectCommand.cs" />
-    <Compile Include="Presentation\Commands\ResetSearchCommand.cs" />
-    <Compile Include="Presentation\Commands\SearchCommand.cs" />
-    <Compile Include="Presentation\Commands\UpdateProjectCommand.cs" />
     <Compile Include="Presentation\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>

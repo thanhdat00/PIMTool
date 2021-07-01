@@ -1,28 +1,27 @@
-﻿using PIMTool.Client.Dictionary;
+﻿using PIMTool.Client.Extension;
+using PIMTool.Client.Presentation.Commands;
 using PIMTool.Services.Resource;
 using System;
 using System.Windows.Input;
 
 namespace PIMTool.Client.Models
 {
-    class ProjectModel
+    class ProjectListModel
     {
-        public ProjectResource Project { get; set; }
+        public ProjectDto Project { get; set; }
         public int ProjectNumber { get; set; }
         public string Name { get; set; }
         public string Status { get; set; }
         public string Customer { get; set; }
         public DateTime StartDate { get; set; }
         public ICommand DeleteProjectCommand { get; set; }
-        public StatusDictionary StatusDic = new StatusDictionary();
-        public ProjectModel(ProjectResource project, ICommand command)
+        public ProjectListModel(ProjectDto project, ICommand deleteCommand)
         {
             Project = project;
-            DeleteProjectCommand = command;
-
+            DeleteProjectCommand = deleteCommand;
             ProjectNumber = Project.ProjectNumber;
             Name = Project.Name;
-            Status = StatusDic.Status[Project.Status].ToString();
+            Status = EnumHelper.Description(Project.Status);
             Customer = Project.Customer;
             StartDate = Project.StartDate;
         }

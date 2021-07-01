@@ -9,8 +9,8 @@ namespace PIMTool.Services.Service
         IList<Entities.ProjectEntity> GetAll();
         Entities.ProjectEntity GetById(int projectId);
         ProjectResponse DeleteById(int projectId);
-        ProjectResponse Save(SaveProjectResource project);
-        ProjectResponse Update(SaveProjectResource project);
+        ProjectResponse Save(SaveProjectDto project);
+        ProjectResponse Update(SaveProjectDto project);
         ProjectResponse DeleteByProjectNumber(int value);
     }
 }

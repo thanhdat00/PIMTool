@@ -8,7 +8,7 @@ namespace PIMTool.Services.Service.Map
     {
         public ResourceToEntityMap()
         {
-            CreateMap<SaveProjectResource, ProjectEntity>();
+            CreateMap<SaveProjectDto, ProjectEntity>();
         }
     }
 }

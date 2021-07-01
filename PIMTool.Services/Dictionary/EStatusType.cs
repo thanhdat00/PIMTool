@@ -5,15 +5,15 @@ namespace PIMTool.Client.Dictionary
     public enum EStatusType
     {
         [Description("New")]
-        NEW = 1,
+        NEW = 0,
 
         [Description("Plan")]
-        PLA = 2,
+        PLA = 1,
 
         [Description("In Progress")]
-        INP = 3,
+        INP = 2,
 
         [Description("Finished")]
-        FIN = 4
+        FIN = 3
     }
 }

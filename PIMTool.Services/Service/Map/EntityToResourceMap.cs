@@ -8,7 +8,7 @@ namespace PIMTool.Services.Service.Map
     {
         public EntityToResourceMap()
         {
-            CreateMap<ProjectEntity, ProjectResource>().ForMember(d => d.Member, m => m.MapFrom(s =>
+            CreateMap<ProjectEntity, ProjectDto>().ForMember(d => d.Member, m => m.MapFrom(s =>
               s.GetMember()));
         }
     }

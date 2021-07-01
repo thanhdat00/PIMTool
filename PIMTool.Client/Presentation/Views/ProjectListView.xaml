@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PIMTool.Client.Presentation.Views"
-             xmlns:viewModels="clr-namespace:PIMTool.Client.Presentation.ViewModels"
+             xmlns:viewModels="clr-namespace:PIMTool.Client.Presentation.ViewModels" xmlns:x1="clr-namespace:PIMTool.Client.Extension"
              mc:Ignorable="d" 
              >
     <Grid Margin="40 38 50 0">
@@ -23,11 +23,9 @@
             <TextBox Text="{Binding ProjectFilter, UpdateSourceTrigger=PropertyChanged}" Width="347" Height="30">
                 
             </TextBox>
-            <ComboBox SelectedIndex="{Binding StatusFilter}" Width="220" Height="30" Margin="21 0 0 0">
-                <ComboBoxItem> New </ComboBoxItem>
-                <ComboBoxItem>Planned</ComboBoxItem>
-                <ComboBoxItem>In Progress</ComboBoxItem>
-                <ComboBoxItem>Finished</ComboBoxItem>
+            <ComboBox SelectedValuePath="Value" DisplayMemberPath="Description" 
+                      ItemsSource="{Binding Path=Status, Converter={x1:EnumToCollectionConverter}}"
+                SelectedIndex="{Binding StatusFilter}" Width="220" Height="30" Margin="21 0 0 0">
             </ComboBox>
             <Button Command="{Binding SearchCommand}" Background="#2F85FA" Width="180" Height="30" Margin="40 0 0 0" Foreground="White">
                 Search Project
@@ -39,13 +37,14 @@
 
         <ListView Grid.Row="2" Margin="0 20 0 0"                 
                   ItemsSource="{Binding ProjectCollectionView}"
-                  SelectedIndex="{Binding SelectedProjectItemIndex}">
+                  SelectedItem="{Binding SelectedItem}" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Number"  Width="60" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding ProjectNumber}" FontSize="15" />
+                                <TextBlock FontSize="15" Text="{Binding ProjectNumber}">
+                                </TextBlock>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

@@ -1,5 +1,7 @@
 ﻿using NHibernate.Mapping.ByCode;
 using NHibernate.Mapping.ByCode.Conformist;
+using NHibernate.Type;
+using PIMTool.Client.Dictionary;
 using PIMTool.Services.Service.Entities;
 
 namespace PIMTool.Services.Service.Map
@@ -23,7 +25,11 @@ namespace PIMTool.Services.Service.Map
             });
             Property(x => x.ProjectNumber);
             Property(x => x.Customer);
-            Property(x => x.Status);
+            Property(x => x.Status, m =>
+            {
+                m.Type<EnumStringType<EStatusType>>();
+                m.NotNullable(true);
+            });
 
             Property(x => x.StartDate, m =>
             {

@@ -5,7 +5,7 @@ namespace PIMTool.Client.Presentation.Commands
 {
     class CommandHandler : ICommand
     {
-        private Action _action;
+        private Action<object> _action;
         private Func<bool> _canExecute;
 
         public event EventHandler CanExecuteChanged
@@ -13,7 +13,7 @@ namespace PIMTool.Client.Presentation.Commands
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
         }
-        public CommandHandler(Action action, Func<bool> canExecute)
+        public CommandHandler(Action<object> action, Func<bool> canExecute)
         {
             _action = action;
             _canExecute = canExecute;
@@ -26,7 +26,8 @@ namespace PIMTool.Client.Presentation.Commands
 
         public void Execute(object parameter)
         {
-            _action();
+            if (parameter != null) _action(parameter);
+            else _action(null);
         }
     }
 }

@@ -9,39 +9,41 @@ namespace PIMTool.Client.Validation
 {
     class DetailProjectValidator : AbstractValidator<DetailProjectViewModel>
     {
-        private List<ProjectResource> _existingProjects;
+        private List<ProjectDto> _existingProjects;
         private bool _isEditMode;
-        public DetailProjectValidator(List<ProjectResource> projects, bool isEditMode)
+
+        public const int MaxProjectNumber = 10000000;
+        public const int MaxProjectNameLength = 100;
+        public const int MaxCustomerLength = 50;
+        public const int Zero = 0;
+        public DetailProjectValidator(List<ProjectDto> projects, bool isEditMode)
         {
             _existingProjects = projects;
             _isEditMode = isEditMode;
 
             RuleFor(p => p.ProjectNumber)
-                .NotNull().WithMessage(ValidationConstant.EmptyInput)
-                .GreaterThan(ValidationConstant.Zero).WithMessage(ValidationConstant.LessThanZero)
-                .LessThan(ValidationConstant.MaxProjectNumber).WithMessage(ValidationConstant.ProjectNumberOverMaxLength)
-                .Must(CheckExistingProject).WithMessage(ValidationConstant.ProjectNumberExisted);
+                .NotNull().WithMessage(ValidationResource.EmptyInput)
+                .GreaterThan(Zero).WithMessage(ValidationResource.LessThanZero)
+                .LessThan(MaxProjectNumber).WithMessage(ValidationResource.ProjectNumberOverMaxLength)
+                .Must(CheckExistingProject).WithMessage(ValidationResource.ProjectNumberExisted);
 
-            RuleFor(p => p.ProjectName)
-                .NotNull().WithMessage(ValidationConstant.EmptyInput)
-                .NotEqual(ValidationConstant.EmptyString).WithMessage(ValidationConstant.EmptyInput)
-                .MaximumLength(ValidationConstant.MaxCustomerLength).WithMessage(ValidationConstant.OverLengthInput);
+            RuleFor(p => p.Name)
+                .NotNull().WithMessage(ValidationResource.EmptyInput)
+                .NotEqual(ValidationResource.EmptyString).WithMessage(ValidationResource.EmptyInput)
+                .MaximumLength(MaxCustomerLength).WithMessage(ValidationResource.OverLengthInput);
 
             RuleFor(p => p.Member)
-                .NotNull().WithMessage(ValidationConstant.EmptyInput)
-                .Must(ValidateVisa).WithMessage(ValidationConstant.InvalidVisa);
-
-            RuleFor(p => p.SelectedStatus)
-                .NotNull().WithMessage(ValidationConstant.EmptyInput);
+                .NotNull().WithMessage(ValidationResource.EmptyInput)
+                .Must(ValidateVisa).WithMessage(ValidationResource.InvalidVisa);
 
             RuleFor(p => p.Customer)
-                .NotNull().WithMessage(ValidationConstant.EmptyInput)
-                .NotEqual(ValidationConstant.EmptyString).WithMessage(ValidationConstant.EmptyInput)
-                .MaximumLength(ValidationConstant.MaxCustomerLength).WithMessage(ValidationConstant.OverLengthInput)
-                .Must(HasSpecialCharater).WithMessage(ValidationConstant.ContainSpecialChar);
+                .NotNull().WithMessage(ValidationResource.EmptyInput)
+                .NotEqual(ValidationResource.EmptyString).WithMessage(ValidationResource.EmptyInput)
+                .MaximumLength(MaxCustomerLength).WithMessage(ValidationResource.OverLengthInput)
+                .Must(HasSpecialCharater).WithMessage(ValidationResource.ContainSpecialChar);
 
             RuleFor(p => p.FinishDate)
-                .GreaterThan(p => p.StartDate).WithMessage(ValidationConstant.InvalidEndDate);
+                .GreaterThan(p => p.StartDate).WithMessage(ValidationResource.InvalidEndDate);
         }
 
         private static bool ValidateVisa(string arg)

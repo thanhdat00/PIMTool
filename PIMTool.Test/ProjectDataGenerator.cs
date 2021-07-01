@@ -57,7 +57,7 @@ namespace PIMTool.Test
                 FinishDate = null,
                 StartDate = DateTime.Now.AddYears(-1),
                 Customer = "ThanhDat",
-                Status = "New",
+                Status = Client.Dictionary.EStatusType.NEW,
             };
         }
 

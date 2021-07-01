@@ -28,8 +28,8 @@
                 <Border BorderBrush="Gray" BorderThickness="0 1 0 0" Margin="0 30 0 0"/>
             </StackPanel>
 
-            <StackPanel Grid.Row="1" Grid.Column="1" Margin="46 0 0 0">
-                <TextBox Text="{Binding ProjectNumber, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            <StackPanel Grid.Row="1" Grid.Column="1" Margin="46 0 0 0" >
+                <TextBox Text="{Binding ProjectNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                          IsEnabled="{Binding ProjectNumberEnable}"
                          Width="204" Height="25" Margin="30 0 0 0" HorizontalAlignment="Left" PreviewTextInput="ProjectNumber_PreviewTextInput">
                     <Validation.ErrorTemplate>
@@ -42,7 +42,7 @@
                         </ControlTemplate>
                     </Validation.ErrorTemplate>
                 </TextBox>
-                <TextBox Text="{Binding ProjectName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  Width="633" Height="25" Margin="30 38 0 0">
+                <TextBox Text="{Binding Name,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  Width="633" Height="25" Margin="30 38 0 0">
                     <Validation.ErrorTemplate>
                         <ControlTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -53,7 +53,7 @@
                         </ControlTemplate>
                     </Validation.ErrorTemplate>
                 </TextBox>
-                <TextBox Text="{Binding Customer,  UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="633" Height="25" Margin="30 38 0 0">
+                <TextBox Text="{Binding Customer,Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="633" Height="25" Margin="30 38 0 0">
                     <Validation.ErrorTemplate>
                         <ControlTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -64,11 +64,11 @@
                         </ControlTemplate>
                     </Validation.ErrorTemplate>
                 </TextBox>
-                <ComboBox SelectedIndex="{Binding Group}" Width="204" Height="25" Margin="30 38 0 0" HorizontalAlignment="Left">
-                    <ComboBoxItem>New</ComboBoxItem>
-                    <ComboBoxItem>Old</ComboBoxItem>
+                <ComboBox 
+                          SelectedIndex="{Binding GroupId, Mode=TwoWay}" 
+                          Width="204" Height="25" Margin="30 38 0 0" HorizontalAlignment="Left">
                 </ComboBox>
-                <TextBox Text="{Binding Member, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="633" Height="25" Margin="30 38 0 0" >
+                <TextBox Text="{Binding Member, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="633" Height="25" Margin="30 38 0 0" >
                     <Validation.ErrorTemplate>
                         <ControlTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -80,8 +80,8 @@
                     </Validation.ErrorTemplate>
                 </TextBox>
                 <ComboBox SelectedValuePath="Value" DisplayMemberPath="Description" 
-                          ItemsSource="{Binding Path=SelectedStatus, Converter={x1:EnumToCollectionConverter}, Mode=OneTime, ValidatesOnDataErrors=True}"
-                          SelectedValue="{Binding Path=SelectedStatus}"
+                          ItemsSource="{Binding Path=Status, Converter={x1:EnumToCollectionConverter}, Mode=OneTime, ValidatesOnDataErrors=True}"
+                          SelectedValue="{Binding Path=Status, Mode=TwoWay}"
                           Width="204" Height="25" Margin="30 38 0 0" HorizontalAlignment="Left">
                     <Validation.ErrorTemplate>
                         <ControlTemplate>
@@ -94,9 +94,9 @@
                     </Validation.ErrorTemplate>
                 </ComboBox>
                 <StackPanel Orientation="Horizontal" Margin="30 38 0 0" >
-                    <DatePicker SelectedDate="{Binding StartDate}" Width="204" Height="25"/>
+                    <DatePicker SelectedDate="{Binding StartDate, Mode=TwoWay}" Width="204" Height="25"/>
                     <TextBlock Text="End Date" Margin="112 0 0 0" FontSize="15"/>
-                    <DatePicker SelectedDate="{Binding FinishDate, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="204" Height="25" Margin="55 0 0 0" RenderTransformOrigin="1.41,0.56" >
+                    <DatePicker SelectedDate="{Binding FinishDate,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="204" Height="25" Margin="55 0 0 0" RenderTransformOrigin="1.41,0.56" >
                         <Validation.ErrorTemplate>
                             <ControlTemplate>
                                 <StackPanel Orientation="Horizontal">

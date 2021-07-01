@@ -22,11 +22,10 @@ namespace PIMTool.Services.Controllers
 
         [Route(RouteConstants.GetAllProjects)]
         [HttpGet]
-        public IEnumerable<ProjectResource> GetProjects()
+        public IEnumerable<ProjectDto> GetProjects()
         {
-            //[TODO] call real service
             var projects = _projectService.GetAll();
-            var resources = _mapper.Map<IEnumerable<ProjectEntity>, IEnumerable<ProjectResource>>(projects);
+            var resources = _mapper.Map<IEnumerable<ProjectEntity>, IEnumerable<ProjectDto>>(projects);
             return resources;
         }
 
@@ -34,7 +33,6 @@ namespace PIMTool.Services.Controllers
         [HttpGet]
         public ProjectEntity GetProject(int projectId)
         {
-            //[TODO] call real service
             return _projectService.GetById(projectId);
         }
 
@@ -49,13 +47,13 @@ namespace PIMTool.Services.Controllers
                 return BadRequest(result.Message);  
             }
 
-            var projectResource = _mapper.Map<ProjectEntity, ProjectResource>(result.Resource);
+            var projectResource = _mapper.Map<ProjectEntity, ProjectDto>(result.Resource);
             return Ok(projectResource);
         }
 
         [Route(RouteConstants.AddProject)]
         [HttpPost]
-        public IHttpActionResult AddProject([FromBody] SaveProjectResource resource)
+        public IHttpActionResult AddProject([FromBody] SaveProjectDto resource)
         {            
             var result = _projectService.Save(resource);
             if (!result.Success)
@@ -67,7 +65,7 @@ namespace PIMTool.Services.Controllers
 
         [Route(RouteConstants.UpdateProject)]
         [HttpPut]
-        public IHttpActionResult UpdateProject([FromBody] SaveProjectResource resource)
+        public IHttpActionResult UpdateProject([FromBody] SaveProjectDto resource)
         {
             var result = _projectService.Update(resource);
             if (!result.Success)

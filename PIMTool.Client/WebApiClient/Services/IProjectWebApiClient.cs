@@ -6,10 +6,10 @@ namespace PIMTool.Client.WebApiClient.Services
 {
     public interface IProjectWebApiClient
     {
-        List<ProjectResource> GetAllProjects();
+        List<ProjectDto> GetAllProjects();
         Project GetProject(int projectId);
         void SaveProject<SaveProjectResource>(SaveProjectResource resource);
-        void UpdateProject(SaveProjectResource resource);
+        void UpdateProject(SaveProjectDto resource);
         void DeleteProject(int projectNumber);
     }
 }

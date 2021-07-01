@@ -15,9 +15,9 @@ namespace PIMTool.Client.WebApiClient.Services
 
         public override string RoutePrefix => RouteConstants.ProjectApi;
 
-        public List<ProjectResource> GetAllProjects()
+        public List<ProjectDto> GetAllProjects()
         {
-            return Task.Run(() => Get<List<ProjectResource>>(RouteConstants.GetAllProjects)).Result;
+            return Task.Run(() => Get<List<ProjectDto>>(RouteConstants.GetAllProjects)).Result;
         }
 
         public Project GetProject(int projectId)
@@ -30,7 +30,7 @@ namespace PIMTool.Client.WebApiClient.Services
             Task.Run(() => Post<SaveProjectResource>(RouteConstants.AddProject, resource));
         }
 
-        public void UpdateProject(SaveProjectResource resource)
+        public void UpdateProject(SaveProjectDto resource)
         {
             Task.Run(() => Put(RouteConstants.UpdateProject, resource));
         }

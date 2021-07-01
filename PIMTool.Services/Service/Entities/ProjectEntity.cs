@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using PIMTool.Client.Dictionary;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -23,7 +24,7 @@ namespace PIMTool.Services.Service.Entities
 
         public virtual int ProjectNumber { get; set; }
         public virtual string Customer { get; set; }
-        public virtual string Status { get; set; }
+        public virtual EStatusType Status { get; set; }
         [Required, Display(Name = "Start Date")]
         public virtual DateTime StartDate
         {

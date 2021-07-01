@@ -11,13 +11,13 @@ namespace PIMTool.Client.Presentation.ViewModels
     {
         private BaseViewModel _selectedViewModel;
         private bool _projectListSelected = true;
-        private bool _createProjectSelected = false;
-        private bool _editProjectSelected = false;
+        private bool _createProjectSelected;
+        private bool _editProjectSelected;
         private ICommand _updateViewCommand;
 
         public readonly IProjectWebApiClient ProjectWebApiClient;
-        public List<ProjectResource> Projects { get; private set; }
-        public ProjectResource SelectedProject { get; set; }
+        public List<ProjectDto> Projects { get; private set; }
+        public ProjectDto SelectedProject { get; set; }
 
         #region Getter Setter
         public bool EditProjectSelected
@@ -65,7 +65,7 @@ namespace PIMTool.Client.Presentation.ViewModels
         {
             get
             {
-                return _updateViewCommand ?? (_updateViewCommand = new CommandHandler(() => HandleUpdateView(), () => CanUpdateView()));
+                return _updateViewCommand ?? (_updateViewCommand = new CommandHandler(HandleUpdateView, () => CanUpdateView()));
             }
         }
 
@@ -74,7 +74,7 @@ namespace PIMTool.Client.Presentation.ViewModels
             return true;
         }
 
-        public void HandleUpdateView()
+        public void HandleUpdateView(object obj)
         {
             if (ProjectListSelected)
                 SelectedViewModel = new ProjectListViewModel(this);

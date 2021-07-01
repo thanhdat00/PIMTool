@@ -90,7 +90,7 @@ namespace PIMTool.Services.Service
             }
         }
 
-        public ProjectResponse Save(SaveProjectResource project)
+        public ProjectResponse Save(SaveProjectDto project)
         {
             using (var scope = _unitOfWorkProvider.Provide())
             {
@@ -108,7 +108,7 @@ namespace PIMTool.Services.Service
             }
         }
 
-        public ProjectResponse Update(SaveProjectResource project)
+        public ProjectResponse Update(SaveProjectDto project)
         {
             using (var scope = _unitOfWorkProvider.Provide())
             {

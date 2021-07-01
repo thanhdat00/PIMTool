@@ -6,7 +6,7 @@ using System.Web;
 
 namespace PIMTool.Services.Resource
 {
-    public class EmployeeResource : BaseResource
+    public class EmployeeResource : BaseDto
     {
         public virtual string Visa { get; set; }
         public virtual string FirstName { get; set; }

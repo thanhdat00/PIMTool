@@ -8,7 +8,7 @@ namespace PIMTool.Services.Service.Repository
 {
     public interface IProjectRepository : IBaseRepository<Entities.ProjectEntity>
     {
-        ProjectEntity NewProject(SaveProjectResource project);
+        ProjectEntity NewProject(SaveProjectDto project);
         ProjectEntity UpdateProject(int projectNumber);
     }
 }

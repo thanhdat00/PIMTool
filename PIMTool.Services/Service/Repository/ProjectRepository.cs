@@ -15,7 +15,7 @@ namespace PIMTool.Services.Service.Repository
         }
 
         // Create a ProjectEntity from a SaveProjectResource
-        public ProjectEntity NewProject(SaveProjectResource project)
+        public ProjectEntity NewProject(SaveProjectDto project)
         {
             var result = new ProjectEntity();
             result.Name = project.Name;

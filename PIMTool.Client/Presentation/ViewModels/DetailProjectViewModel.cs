@@ -17,21 +17,21 @@ namespace PIMTool.Client.Presentation.ViewModels
         private readonly IProjectWebApiClient _projectWebApiClient;
         private MainViewModel _mainViewModel;
         private int _projectNumber;
-        private string _projectName;
+        private string _name;
         private string _customer;
-        private int _group;
+        private int _groupId;
         private string _member;
-        private EStatusType _selectedStatus;
+        private EStatusType _status;
         private DateTime _startDate = DateTime.Now;
         private DateTime? _finishDate;
         private DetailProjectValidator _projectValidator;
         private ICommand _saveOrUpdateCommand;
-        private bool _isEditMode = false;
+        private bool _isEditMode;
         private bool _projectNumberEnable = true;
         private string _buttonMode = "Create Project";
 
         #region Getter Setter
-        public ProjectResource EditedProject { get; set; }
+        public ProjectDto EditedProject { get; set; }
 
         public bool IsEditMode
         {
@@ -71,13 +71,13 @@ namespace PIMTool.Client.Presentation.ViewModels
                 OnPropertyChanged(nameof(ProjectNumber));
             }
         }
-        public string ProjectName
+        public string Name
         {
-            get { return _projectName; }
+            get { return _name; }
             set
             {
-                _projectName = value;
-                OnPropertyChanged(nameof(ProjectName));
+                _name = value;
+                OnPropertyChanged(nameof(Name));
             }
         }
         public string Customer
@@ -98,25 +98,25 @@ namespace PIMTool.Client.Presentation.ViewModels
                 OnPropertyChanged(nameof(Member));
             }
         }
-        public int Group
+        public int GroupId
         {
-            get { return _group; }
+            get { return _groupId; }
             set
             {
-                _group = value;
-                OnPropertyChanged(nameof(Group));
+                _groupId = value;
+                OnPropertyChanged(nameof(GroupId));
             }
         }
         
-        public EStatusType SelectedStatus
+        public EStatusType Status
         {
-            get { return _selectedStatus; }
+            get { return _status; }
             set
             {
-                if (_selectedStatus != value)
+                if (_status != value)
                 {
-                    _selectedStatus = value;
-                    OnPropertyChanged(nameof(SelectedStatus));
+                    _status = value;
+                    OnPropertyChanged(nameof(Status));
                 }
             }
         }
@@ -143,7 +143,7 @@ namespace PIMTool.Client.Presentation.ViewModels
         {
             get
             {
-                return _saveOrUpdateCommand ?? (_saveOrUpdateCommand = new CommandHandler(() => SaveOrUpdateProject(), () => CanUpdateProject()));
+                return _saveOrUpdateCommand ?? (_saveOrUpdateCommand = new CommandHandler(SaveOrUpdateProject, () => CanUpdateProject()));
             }
         }
 
@@ -181,7 +181,7 @@ namespace PIMTool.Client.Presentation.ViewModels
         }
         #endregion
 
-        public DetailProjectViewModel(MainViewModel mainViewModel, bool isEditMode, ProjectResource project = null)
+        public DetailProjectViewModel(MainViewModel mainViewModel, bool isEditMode, ProjectDto project = null)
         {
             IsEditMode = isEditMode;
             _mainViewModel = mainViewModel;
@@ -197,15 +197,15 @@ namespace PIMTool.Client.Presentation.ViewModels
         }
 
         //Update Project to the DB
-        private void SaveOrUpdateProject()
+        private void SaveOrUpdateProject(object obj)
         {
-            var project = new SaveProjectResource();
+            var project = new SaveProjectDto();
             project.ProjectNumber = ProjectNumber;
-            project.GroupId = Group + 1;
+            project.GroupId = GroupId + 1;
             project.Customer = Customer;
-            project.Name = ProjectName;
+            project.Name = Name;
             project.Member = Member.Trim(' ');
-            project.Status = Enum.GetName(typeof(EStatusType), SelectedStatus);
+            project.Status = Status;
             project.StartDate = StartDate;
             project.FinishDate = FinishDate;
             if (!IsEditMode)
@@ -223,11 +223,11 @@ namespace PIMTool.Client.Presentation.ViewModels
         private void LoadProject()
         {
             ProjectNumber = EditedProject.ProjectNumber;
-            ProjectName = EditedProject.Name;
+            Name = EditedProject.Name;
             Customer = EditedProject.Customer;
-            Group = EditedProject.GroupId - 1;
+            GroupId = EditedProject.GroupId - 1;
             Member = EditedProject.Member;
-            SelectedStatus = EnumHelper.GetEnumValue<EStatusType>(EditedProject.Status);
+            Status = EditedProject.Status;
             StartDate = EditedProject.StartDate;
             FinishDate = EditedProject.FinishDate;
         }

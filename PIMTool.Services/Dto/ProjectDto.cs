@@ -1,8 +1,9 @@
-﻿using System;
+﻿using PIMTool.Client.Dictionary;
+using System;
 
 namespace PIMTool.Services.Resource
 {
-    public class ProjectResource : BaseResource
+    public class ProjectDto : BaseDto
     {
         public bool IsSelected { get; set; } = false;
         public virtual string Name
@@ -12,7 +13,7 @@ namespace PIMTool.Services.Resource
         }
         public virtual int ProjectNumber { get; set; }
         public virtual string Customer { get; set; }
-        public virtual string Status { get; set; }
+        public virtual EStatusType Status { get; set; }
         public virtual string Member { get; set; }
         public virtual DateTime StartDate
         {

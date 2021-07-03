@@ -10,5 +10,10 @@
         public const string DeleteProject = "DeleteProject/{projectNumber}";
         public const string AddProject = "AddProject";
         public const string UpdateProject = "UpdateProject";
+        public const string SearchProject = "SearchProject";
+
+        public const string EmployeeApi = "api/employee";
+
+        public const string GetAllEmployees = "GetAll";
     }
 }

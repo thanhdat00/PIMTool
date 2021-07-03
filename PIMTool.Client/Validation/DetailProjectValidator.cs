@@ -32,10 +32,6 @@ namespace PIMTool.Client.Validation
                 .NotEqual(ValidationResource.EmptyString).WithMessage(ValidationResource.EmptyInput)
                 .MaximumLength(MaxCustomerLength).WithMessage(ValidationResource.OverLengthInput);
 
-            RuleFor(p => p.Member)
-                .NotNull().WithMessage(ValidationResource.EmptyInput)
-                .Must(ValidateVisa).WithMessage(ValidationResource.InvalidVisa);
-
             RuleFor(p => p.Customer)
                 .NotNull().WithMessage(ValidationResource.EmptyInput)
                 .NotEqual(ValidationResource.EmptyString).WithMessage(ValidationResource.EmptyInput)

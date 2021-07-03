@@ -4,6 +4,7 @@ using AutoMapper;
 using PIMTool.Services.Resource;
 using PIMTool.Services.Service.Communication;
 using PIMTool.Services.Service.Entities;
+using PIMTool.Services.Service.Models;
 using PIMTool.Services.Service.Pattern;
 using PIMTool.Services.Service.Repository;
 
@@ -130,6 +131,17 @@ namespace PIMTool.Services.Service
                     return new ProjectResponse($"An error occurred when updating the project: {ex.Message}");
                 }
             }
+        }
+
+        public SearchProjectQueryResult GetSearchProject(SearchProjectQuery query)
+        {
+            SearchProjectQueryResult searchProjectResult;
+            using (var scope = _unitOfWorkProvider.Provide())
+            {
+                    searchProjectResult = _projectRepository.GetSearchProject(query);
+                    scope.Complete();
+            }
+            return searchProjectResult;
         }
     }
 }

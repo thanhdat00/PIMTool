@@ -16,7 +16,9 @@ namespace PIMTool.Client.Presentation.ViewModels
         private ICommand _updateViewCommand;
 
         public readonly IProjectWebApiClient ProjectWebApiClient;
+        public readonly IEmployeeWebApiClient EmployeeWebApiClient;
         public List<ProjectDto> Projects { get; private set; }
+        public List<EmployeeDto> Employees { get; set; }
         public ProjectDto SelectedProject { get; set; }
 
         #region Getter Setter
@@ -84,10 +86,12 @@ namespace PIMTool.Client.Presentation.ViewModels
                 SelectedViewModel = new DetailProjectViewModel(this,true,this.SelectedProject);
         }
 
-        public MainViewModel(IProjectWebApiClient projectWebApiClient)
+        public MainViewModel(IProjectWebApiClient projectWebApiClient, IEmployeeWebApiClient employeeWebApiClient)
         {
             ProjectWebApiClient = projectWebApiClient;
-            Projects = projectWebApiClient.GetAllProjects();
+            EmployeeWebApiClient = employeeWebApiClient;
+            Projects = ProjectWebApiClient.GetAllProjects();
+            Employees = EmployeeWebApiClient.GetAllEmployees();
             SelectedViewModel = new ProjectListViewModel(this);
         }
 

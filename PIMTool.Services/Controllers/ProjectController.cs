@@ -5,6 +5,7 @@ using PIMTool.Common;
 using PIMTool.Services.Resource;
 using PIMTool.Services.Service;
 using PIMTool.Services.Service.Entities;
+using PIMTool.Services.Service.Models;
 
 namespace PIMTool.Services.Controllers
 {
@@ -73,6 +74,14 @@ namespace PIMTool.Services.Controllers
                 return BadRequest(result.Message);
             }
             return Ok(result.Resource);
+        }
+
+        [Route(RouteConstants.SearchProject)]
+        [HttpGet]
+        public SearchProjectQueryResult GetSearchProjects([FromUri] SearchProjectQuery query)
+        {
+            var result = _projectService.GetSearchProject(query);
+            return result;
         }
     }
 }

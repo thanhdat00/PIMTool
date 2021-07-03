@@ -4,7 +4,9 @@ using PIMTool.Client.Presentation.Commands;
 using PIMTool.Client.Validation;
 using PIMTool.Client.WebApiClient.Services;
 using PIMTool.Services.Resource;
+using Prism.Mvvm;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading;
@@ -16,6 +18,7 @@ namespace PIMTool.Client.Presentation.ViewModels
     {
         private readonly IProjectWebApiClient _projectWebApiClient;
         private MainViewModel _mainViewModel;
+
         private int _projectNumber;
         private string _name;
         private string _customer;
@@ -24,11 +27,34 @@ namespace PIMTool.Client.Presentation.ViewModels
         private EStatusType _status;
         private DateTime _startDate = DateTime.Now;
         private DateTime? _finishDate;
+
+        private List<EmployeeDto> _employeesSource = new List<EmployeeDto>();
+        private List<EmployeeDto> _selectedEmployee;
+
         private DetailProjectValidator _projectValidator;
         private ICommand _saveOrUpdateCommand;
         private bool _isEditMode;
         private bool _projectNumberEnable = true;
         private string _buttonMode = "Create Project";
+
+        public List<EmployeeDto> EmployeesSource
+        {
+            get { return _employeesSource; }
+            set
+            {
+                _employeesSource = value;
+            }
+        }
+
+        public List<EmployeeDto> SelectedEmployee
+        {
+            get { return _selectedEmployee; }
+            set
+            {
+                _selectedEmployee = value;
+            }
+        }
+        
 
         #region Getter Setter
         public ProjectDto EditedProject { get; set; }
@@ -187,7 +213,11 @@ namespace PIMTool.Client.Presentation.ViewModels
             _mainViewModel = mainViewModel;
             _projectValidator = new DetailProjectValidator(_mainViewModel.Projects, isEditMode);
             _projectWebApiClient = _mainViewModel.ProjectWebApiClient;
+
             EditedProject = project;
+            EmployeesSource = _mainViewModel.Employees;
+            SelectedEmployee = new List<EmployeeDto>() { EmployeesSource.FirstOrDefault() };
+
             if (IsEditMode)
             {
                 ProjectNumberEnable = false;

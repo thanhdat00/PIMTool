@@ -11,6 +11,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition />
         </Grid.RowDefinitions>
 
@@ -35,7 +37,8 @@
             </Button>
         </StackPanel>
 
-        <ListView Grid.Row="2" Margin="0 20 0 0"                 
+        <ListView Grid.Row="2" Margin="0 20 0 0"
+                  Height="auto"
                   ItemsSource="{Binding ProjectCollectionView}"
                   SelectedItem="{Binding SelectedItem}" >
             <ListView.View>
@@ -91,6 +94,15 @@
             </GridView>
             </ListView.View>
         </ListView>
-        
+        <StackPanel Margin="200 20 0 0" 
+                    Grid.Row="3">
+            <ItemsControl ItemsSource="{Binding PageCollection}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Content="1"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
     </Grid>
 </UserControl>

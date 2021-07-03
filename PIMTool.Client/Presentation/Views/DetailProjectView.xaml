@@ -3,7 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:PIMTool.Client.Presentation.Views" xmlns:x1="clr-namespace:PIMTool.Client.Extension"
+             xmlns:local="clr-namespace:PIMTool.Client.Presentation.Views" 
+             xmlns:x1="clr-namespace:PIMTool.Client.Extension" 
+             xmlns:controls="clr-namespace:BlackPearl.Controls.CoreLibrary;assembly=BlackPearl.Controls.CoreLibrary" 
+             xmlns:viewmodels="clr-namespace:PIMTool.Client.Presentation.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:DetailProjectViewModel}"
              mc:Ignorable="d" >
     <Grid Margin="50 50 414 30">
         <Grid.RowDefinitions>
@@ -67,18 +70,15 @@
                 <ComboBox 
                           SelectedIndex="{Binding GroupId, Mode=TwoWay}" 
                           Width="204" Height="25" Margin="30 38 0 0" HorizontalAlignment="Left">
+                    <ComboBoxItem Content="New"/>
+                    <ComboBoxItem Content="Old"/>
                 </ComboBox>
-                <TextBox Text="{Binding Member, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="633" Height="25" Margin="30 38 0 0" >
-                    <Validation.ErrorTemplate>
-                        <ControlTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <!-- Placeholder for the TextBox itself -->
-                                <AdornedElementPlaceholder x:Name="textBox"/>
-                                <TextBlock Margin="10" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
-                            </StackPanel>
-                        </ControlTemplate>
-                    </Validation.ErrorTemplate>
-                </TextBox>
+                <StackPanel Width="633" Height="25" Margin="30 38 0 0">
+                    <controls:MultiSelectCombobox ItemSource="{Binding EmployeesSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                              SelectedItems="{Binding SelectedEmployee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                              DisplayMemberPath="FirstName"
+                                              ItemSeparator=";" />
+                </StackPanel>
                 <ComboBox SelectedValuePath="Value" DisplayMemberPath="Description" 
                           ItemsSource="{Binding Path=Status, Converter={x1:EnumToCollectionConverter}, Mode=OneTime, ValidatesOnDataErrors=True}"
                           SelectedValue="{Binding Path=Status, Mode=TwoWay}"

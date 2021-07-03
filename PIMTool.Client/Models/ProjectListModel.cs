@@ -1,5 +1,4 @@
 ﻿using PIMTool.Client.Extension;
-using PIMTool.Client.Presentation.Commands;
 using PIMTool.Services.Resource;
 using System;
 using System.Windows.Input;

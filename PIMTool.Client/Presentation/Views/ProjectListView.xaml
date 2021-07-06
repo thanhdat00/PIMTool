@@ -39,6 +39,7 @@
 
         <ListView Grid.Row="2" Margin="0 20 0 0"
                   Height="auto"
+                  HorizontalAlignment="Left"
                   ItemsSource="{Binding ProjectCollectionView}"
                   SelectedItem="{Binding SelectedItem}" >
             <ListView.View>
@@ -51,7 +52,7 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Name"  Width="200">
+                    <GridViewColumn Header="Name"  Width="350">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Name}" FontSize="15" />
@@ -94,15 +95,35 @@
             </GridView>
             </ListView.View>
         </ListView>
-        <StackPanel Margin="200 20 0 0" 
+        <StackPanel Margin="550 20 0 0" Orientation="Horizontal"
                     Grid.Row="3">
-            <ItemsControl ItemsSource="{Binding PageCollection}">
+            <Button Width="30" Height="30">
+                <Button.Content>
+                    <Image Source="/Images/previous_page.png" />
+                </Button.Content>
+            </Button>
+
+            <ItemsControl ItemsSource="{Binding PageCollection,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Content="1"/>
+                        <Button Width="30" Height="30"
+                                Content="{Binding PageNumber}"
+                                Command="{Binding PageSelectCommand}"
+                                CommandParameter="{Binding PageNumber}"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
+
+            <Button Width="30" Height="30">
+                <Button.Content>
+                    <Image Source="/Images/nextpage_icon.png" />
+                </Button.Content>
+            </Button>
         </StackPanel>
     </Grid>
 </UserControl>

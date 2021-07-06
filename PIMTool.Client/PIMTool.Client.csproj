@@ -61,6 +61,7 @@
     <Compile Include="Extension\EnumHelper.cs" />
     <Compile Include="Extension\EnumToCollectionConverter.cs" />
     <Compile Include="Extension\ValueDescription.cs" />
+    <Compile Include="Models\PageModel.cs" />
     <Compile Include="Models\ProjectListModel.cs" />
     <Compile Include="Presentation\Commands\CommandHandler.cs" />
     <Compile Include="Presentation\MainWindow.xaml.cs">
@@ -72,6 +73,9 @@
     <Compile Include="Presentation\ViewModels\ProjectListViewModel.cs" />
     <Compile Include="Presentation\Views\DetailProjectView.xaml.cs">
       <DependentUpon>DetailProjectView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ErrorView.xaml.cs">
+      <DependentUpon>ErrorView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\Views\ProjectListView.xaml.cs">
       <DependentUpon>ProjectListView.xaml</DependentUpon>
@@ -144,11 +148,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Presentation\CustomTemplate\MultiSelectTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Presentation\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Presentation\Views\DetailProjectView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ErrorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -188,6 +200,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\delete_icon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\previous_page.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\nextpage_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

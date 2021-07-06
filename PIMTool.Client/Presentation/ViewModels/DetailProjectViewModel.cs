@@ -7,8 +7,10 @@ using PIMTool.Services.Resource;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using System.Windows.Input;
 
@@ -28,8 +30,8 @@ namespace PIMTool.Client.Presentation.ViewModels
         private DateTime _startDate = DateTime.Now;
         private DateTime? _finishDate;
 
-        private List<EmployeeDto> _employeesSource = new List<EmployeeDto>();
-        private List<EmployeeDto> _selectedEmployee;
+        private ObservableCollection<string> _employeesSource = new ObservableCollection<string>();
+        private ObservableCollection<string> _selectedEmployee;
 
         private DetailProjectValidator _projectValidator;
         private ICommand _saveOrUpdateCommand;
@@ -37,7 +39,7 @@ namespace PIMTool.Client.Presentation.ViewModels
         private bool _projectNumberEnable = true;
         private string _buttonMode = "Create Project";
 
-        public List<EmployeeDto> EmployeesSource
+        public ObservableCollection<string> EmployeesSource
         {
             get { return _employeesSource; }
             set
@@ -46,15 +48,43 @@ namespace PIMTool.Client.Presentation.ViewModels
             }
         }
 
-        public List<EmployeeDto> SelectedEmployee
+        public ObservableCollection<string> SelectedEmployee
         {
-            get { return _selectedEmployee; }
+            get 
+            { 
+                if (_selectedEmployee == null)
+                {
+                    _selectedEmployee = new ObservableCollection<string>();
+                    _selectedEmployee.CollectionChanged +=
+                        (s, e) =>
+                        {
+                            WriteSelectedEmployeesString(_selectedEmployee);
+                            OnPropertyChanged(nameof(SelectedEmployee));
+                        };
+                }
+                return _selectedEmployee; 
+            }
             set
             {
                 _selectedEmployee = value;
             }
         }
-        
+
+        private static string WriteSelectedEmployeesString(IList<string> list)
+        {
+            if (list.Count == 0)
+                return String.Empty;
+
+            StringBuilder builder = new StringBuilder(list[0]);
+
+            for (int i = 1; i < list.Count; i++)
+            {
+                builder.Append(", ");
+                builder.Append(list[i]);
+            }
+
+            return builder.ToString();
+        }
 
         #region Getter Setter
         public ProjectDto EditedProject { get; set; }
@@ -215,8 +245,8 @@ namespace PIMTool.Client.Presentation.ViewModels
             _projectWebApiClient = _mainViewModel.ProjectWebApiClient;
 
             EditedProject = project;
-            EmployeesSource = _mainViewModel.Employees;
-            SelectedEmployee = new List<EmployeeDto>() { EmployeesSource.FirstOrDefault() };
+            foreach (var item in _mainViewModel.Employees)
+                EmployeesSource.Add(item.Visa);
 
             if (IsEditMode)
             {

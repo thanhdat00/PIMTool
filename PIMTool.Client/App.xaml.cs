@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 using Ninject;
 using PIMTool.Client.DependencyInjection;
 using PIMTool.Client.Presentation;
@@ -28,6 +29,14 @@ namespace PIMTool.Client
 
             // Load config for log4net
             log4net.Config.XmlConfigurator.Configure();
+
+            Dispatcher.UnhandledException += OnDispatcherUnhandledException;
+        }
+        private void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            string errorMessage = string.Format("An unhandled exception occurred: {0}", e.Exception.Message);
+            MessageBox.Show(errorMessage, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            e.Handled = true;
         }
 
         protected override void OnStartup(StartupEventArgs e)

@@ -65,7 +65,6 @@ namespace PIMTool.Client.WebApiClient
 
             ClassTracer.DebugFormat("Request [POST] to url '{0}{1}' with data '{2}'", BaseAddressServices, route, value);
             var postContent = CreateJsonContentFromObject(value);
-            var test = postContent.ReadAsStringAsync().Result;
             var responseContent = await PerformWebClientAction(client => client.PostAsync(route, postContent), completeUrl);
             string responseContentString = await responseContent.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<T>(responseContentString, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Objects });

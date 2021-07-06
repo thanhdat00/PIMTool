@@ -80,7 +80,7 @@ namespace PIMTool.Services.Service
                 try
                 {
                     _projectRepository.Delete(exsitingProject);
-                    scope.Complete();
+                    scope.Complete();                   
                     return new ProjectResponse(exsitingProject);
                 }
                 catch (Exception ex)

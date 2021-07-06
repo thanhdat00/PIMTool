@@ -6,6 +6,9 @@ using PIMTool.Services.Service.Generic;
 using PIMTool.Services.Service.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Reflection;
 
 namespace PIMTool.Services.Service.Repository
 {
@@ -41,39 +44,52 @@ namespace PIMTool.Services.Service.Repository
                 EmployeeEntity employee = Session.QueryOver<EmployeeEntity>()
                                       .Where(p => p.Visa == item).SingleOrDefault();
                 result.Employees.Add(employee);
-            }           
+            }             
             return result;
         }
 
         public SearchProjectQueryResult GetSearchProject(SearchProjectQuery query)
         {
             List<ProjectEntity> searchProjectsResult = new List<ProjectEntity>();
-            if (query.SearchCriteria.Equals(string.Empty))
+            int totalItems;
+            if (query.SearchCriteria.Equals("none"))
+            {
+                totalItems = Session.QueryOver<ProjectEntity>().RowCount();
                 searchProjectsResult = Session.QueryOver<ProjectEntity>()
-                                        .Skip((query.SelectedPage - 1) * query.PageSize)
-                                        .Take(query.PageSize)
-                                        .List() as List<ProjectEntity>;
+                        .Skip((query.SelectedPage - 1) * query.PageSize)
+                        .Take(query.PageSize)
+                        .List() as List<ProjectEntity>;
+            }
+
             else
+            {
+                totalItems = Session.QueryOver<ProjectEntity>()
+                                        .Where(p => p.Status == GetEnumValue<EStatusType>(query.SearchCriteria))
+                                        .RowCount();
                 searchProjectsResult = Session.QueryOver<ProjectEntity>()
                                         .Where(p => p.Status == GetEnumValue<EStatusType>(query.SearchCriteria))
                                         .Skip((query.SelectedPage - 1) * query.PageSize)
                                         .Take(query.PageSize)
                                         .List() as List<ProjectEntity>;
+            }
 
-            int totalItems = searchProjectsResult.Count;
             var projectDtoResult = _mapper.Map<List<ProjectEntity>, List<ProjectDto>>(searchProjectsResult);
             return new SearchProjectQueryResult(projectDtoResult, totalItems);
         }
 
-        public static T GetEnumValue<T>(string str) where T : struct, IConvertible
+        public static T GetEnumValue<T>(string description) where T : struct, IConvertible
         {
-            Type enumType = typeof(T);
-            if (!enumType.IsEnum)
-            {
-                throw new Exception("T must be an Enumeration type.");
-            }
-            T val;
-            return Enum.TryParse<T>(str, true, out val) ? val : default(T);
+            var type = typeof(T);
+            if (!type.IsEnum)
+                throw new ArgumentException();
+            FieldInfo[] fields = type.GetFields();
+            var field = fields
+                            .SelectMany(f => f.GetCustomAttributes(
+                                typeof(DescriptionAttribute), false), (
+                                    f, a) => new { Field = f, Att = a })
+                            .Where(a => ((DescriptionAttribute)a.Att)
+                                .Description == description).SingleOrDefault();
+            return field == null ? default(T) : (T)field.Field.GetRawConstantValue();
         }
     }
 }

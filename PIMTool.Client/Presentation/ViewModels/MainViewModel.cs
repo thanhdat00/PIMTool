@@ -1,6 +1,7 @@
 ﻿using PIMTool.Client.Presentation.Commands;
 using PIMTool.Client.WebApiClient.Services;
 using PIMTool.Services.Resource;
+using PIMTool.Services.Service.Models;
 using System;
 using System.Collections.Generic;
 using System.Windows.Input;
@@ -90,6 +91,8 @@ namespace PIMTool.Client.Presentation.ViewModels
         {
             ProjectWebApiClient = projectWebApiClient;
             EmployeeWebApiClient = employeeWebApiClient;
+
+            //var queryResult = ProjectWebApiClient.GetSearchProject(new SearchProjectQuery());
             Projects = ProjectWebApiClient.GetAllProjects();
             Employees = EmployeeWebApiClient.GetAllEmployees();
             SelectedViewModel = new ProjectListViewModel(this);

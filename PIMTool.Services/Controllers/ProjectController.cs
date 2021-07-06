@@ -78,8 +78,12 @@ namespace PIMTool.Services.Controllers
 
         [Route(RouteConstants.SearchProject)]
         [HttpGet]
-        public SearchProjectQueryResult GetSearchProjects([FromUri] SearchProjectQuery query)
+        public SearchProjectQueryResult GetSearchProjects(int selectedPage, int pageSize, string searchCriteria)
         {
+            var query = new SearchProjectQuery();
+            query.SearchCriteria = searchCriteria;
+            query.SelectedPage = selectedPage;
+            query.PageSize = pageSize;
             var result = _projectService.GetSearchProject(query);
             return result;
         }

@@ -5,7 +5,10 @@ using PIMTool.Client.Models;
 using PIMTool.Client.Presentation.Commands;
 using PIMTool.Client.WebApiClient.Services;
 using PIMTool.Services.Resource;
+using PIMTool.Services.Service.Models;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Data;
@@ -19,13 +22,36 @@ namespace PIMTool.Client.Presentation.ViewModels
         private readonly IProjectWebApiClient _projectWebApiClient;
         private MainViewModel _mainViewModel;
         private int _statusFilter;
+        private int _totalItems;
         private ProjectListModel _selectedItem;
-        private List<ProjectListModel> ProjectList = new List<ProjectListModel>();     
+        private List<ProjectListModel> ProjectList;     
         private ICommand _searchCommand;
         private ICommand _resetSearchCommand;
-        public ICollectionView ProjectCollectionView { get; }
+        
+        private ObservableCollection<PageModel> _pageCollection;
+        private ICollectionView _projectCollectionView;
+        private string _currentSelectedStatus;
+        public int NumberOfPage { get; set; }
+        public List<ProjectDto> ListOfProject { get; set; }      
         public EStatusType Status { get; set; }
-
+        public ICollectionView ProjectCollectionView
+        {
+            get { return _projectCollectionView; }
+            set
+            {
+                _projectCollectionView = value;
+                OnPropertyChanged(nameof(ProjectCollectionView));
+            }
+        }
+        public ObservableCollection<PageModel> PageCollection
+        {
+            get { return _pageCollection; }
+            set
+            {
+                _pageCollection = value;
+                OnPropertyChanged(nameof(PageCollection));
+            }
+        }
         public ProjectListModel SelectedItem
         {
             get { return _selectedItem; }
@@ -35,7 +61,6 @@ namespace PIMTool.Client.Presentation.ViewModels
                 HandleSelectProject();
             }
         }
-
         public ICommand SearchCommand
         {
             get
@@ -74,18 +99,63 @@ namespace PIMTool.Client.Presentation.ViewModels
         {
             _mainViewModel = mainViewModel;
             _projectWebApiClient = _mainViewModel.ProjectWebApiClient;
-            foreach (var item in _mainViewModel.Projects)
+
+            ListOfProject = _projectWebApiClient.GetSearchProject(new SearchProjectQuery()).ProjectItems;
+            _totalItems = _projectWebApiClient.GetSearchProject(new SearchProjectQuery()).TotalItems;
+            LoadProjectToCollectionView();
+
+            _currentSelectedStatus = "none";
+            NumberOfPage = PageCount(_totalItems);
+            InitPageButton();
+
+        }
+        
+        private void InitPageButton()
+        {
+            PageCollection = new ObservableCollection<PageModel>();
+            for (int i=1; i <= NumberOfPage; i++)
+            {
+                PageCollection.Add(new PageModel(i.ToString(), 
+                    new CommandHandler(HandlePageSelect, () => { return true; })));
+            }
+        }
+        private int PageCount(int totalItems)
+        {
+            if (totalItems % 10 == 0)
+                return totalItems / 10;
+            else
+                return totalItems / 10 + 1;
+        }
+        private void LoadProjectToCollectionView()
+        {
+            ProjectList = new List<ProjectListModel>();
+            foreach (var item in ListOfProject)
             {
                 ProjectList.Add(new ProjectListModel(item, new CommandHandler(HandleDeleteProject, () => { return true; })));
             }
-
+ 
             ProjectCollectionView = CollectionViewSource.GetDefaultView(ProjectList);
             ProjectCollectionView.Filter = FilterProject;
-            ProjectCollectionView.GroupDescriptions.Add(new PropertyGroupDescription(nameof(ProjectDto.Status)));
-            ProjectCollectionView.SortDescriptions.Add(new SortDescription(nameof(ProjectDto.ProjectNumber),
-                                                        ListSortDirection.Ascending));
         }
-        
+
+        private void HandlePageSelect(object pageNumber)
+        { 
+            var searchQuery = new SearchProjectQuery
+            {
+                SearchCriteria = _currentSelectedStatus,
+                SelectedPage = int.Parse(pageNumber.ToString()),
+            };
+            InitialSelectPage(searchQuery);
+        }
+
+        private void InitialSelectPage(SearchProjectQuery searchQuery)
+        {
+            ListOfProject = _projectWebApiClient.GetSearchProject(searchQuery).ProjectItems;
+            NumberOfPage = PageCount(_projectWebApiClient.GetSearchProject(searchQuery).TotalItems);
+            LoadProjectToCollectionView();
+            ProjectCollectionView.Refresh();
+            InitPageButton();
+        }
         //Handle event when click the delete button
         private void HandleDeleteProject(object prjNumber)
         {
@@ -105,7 +175,8 @@ namespace PIMTool.Client.Presentation.ViewModels
         private void HandleResetSearch(object obj)
         {
             StatusFilter = -1;
-            ProjectCollectionView.Filter = FilterProject;
+            var searchQuery = new SearchProjectQuery();
+            InitialSelectPage(searchQuery);
         }
 
         //Handle event when click to search project
@@ -113,7 +184,18 @@ namespace PIMTool.Client.Presentation.ViewModels
         {
             if (StatusFilter > -1 )
             {
-                ProjectCollectionView.Filter = FilterProjectByStatus;
+                var searchQuery = new SearchProjectQuery
+                {
+                    SearchCriteria = ((EStatusType)StatusFilter).AsString(EnumFormat.Description),
+                    SelectedPage =1
+                };
+
+                _currentSelectedStatus = searchQuery.SearchCriteria;
+                ListOfProject = _projectWebApiClient.GetSearchProject(searchQuery).ProjectItems;
+                NumberOfPage = PageCount(_projectWebApiClient.GetSearchProject(searchQuery).TotalItems);
+                LoadProjectToCollectionView();
+                ProjectCollectionView.Refresh();
+                InitPageButton();
             }
         }
 

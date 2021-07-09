@@ -4,6 +4,7 @@ using AutoMapper;
 using PIMTool.Services.Resource;
 using PIMTool.Services.Service.Communication;
 using PIMTool.Services.Service.Entities;
+using PIMTool.Services.Service.Models;
 using PIMTool.Services.Service.Pattern;
 using PIMTool.Services.Service.Repository;
 
@@ -71,7 +72,7 @@ namespace PIMTool.Services.Service
         {
             using (var scope = _unitOfWorkProvider.Provide())
             {
-                var exsitingProject = _projectRepository.UpdateProject(value);
+                var exsitingProject = _projectRepository.FindProject(value);
 
                 if (exsitingProject == null)
                     return new ProjectResponse("Project not found");
@@ -79,14 +80,13 @@ namespace PIMTool.Services.Service
                 try
                 {
                     _projectRepository.Delete(exsitingProject);
-                    scope.Complete();
+                    scope.Complete();                   
                     return new ProjectResponse(exsitingProject);
                 }
                 catch (Exception ex)
                 {
                     return new ProjectResponse($"An error occurred when deleting the project: {ex.Message}");
                 }
-
             }
         }
 
@@ -114,7 +114,7 @@ namespace PIMTool.Services.Service
             {
                 try
                 {
-                    var updateProject = _projectRepository.UpdateProject(project.ProjectNumber);
+                    var updateProject = _projectRepository.FindProject(project.ProjectNumber);
                     updateProject.Name = project.Name;
                     updateProject.Customer = project.Customer;
                     updateProject.Status = project.Status;
@@ -130,6 +130,17 @@ namespace PIMTool.Services.Service
                     return new ProjectResponse($"An error occurred when updating the project: {ex.Message}");
                 }
             }
+        }
+
+        public SearchProjectQueryResult GetSearchProject(SearchProjectQuery query)
+        {
+            SearchProjectQueryResult searchProjectResult;
+            using (var scope = _unitOfWorkProvider.Provide())
+            {
+                    searchProjectResult = _projectRepository.GetSearchProject(query);
+                    scope.Complete();
+            }
+            return searchProjectResult;
         }
     }
 }

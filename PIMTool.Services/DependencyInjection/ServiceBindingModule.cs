@@ -44,6 +44,8 @@ namespace PIMTool.Services.DependencyInjection
         {
             Bind<IProjectService>().To<ProjectService>().InSingletonScope();
             Bind<IProjectRepository>().To<ProjectRepository>();
+            Bind<IEmployeeService>().To<EmployeeService>().InSingletonScope();
+            Bind<IEmployeeRepository>().To<EmployeeRepository>();
             Bind<IMapper>()
                 .ToMethod(context =>
                 {

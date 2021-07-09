@@ -10,6 +10,8 @@ namespace PIMTool.Services.Service.Map
         {
             CreateMap<ProjectEntity, ProjectDto>().ForMember(d => d.Member, m => m.MapFrom(s =>
               s.GetMember()));
+
+            CreateMap<EmployeeEntity, EmployeeDto>();
         }
     }
 }

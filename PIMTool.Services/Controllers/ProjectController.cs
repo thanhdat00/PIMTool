@@ -5,6 +5,7 @@ using PIMTool.Common;
 using PIMTool.Services.Resource;
 using PIMTool.Services.Service;
 using PIMTool.Services.Service.Entities;
+using PIMTool.Services.Service.Models;
 
 namespace PIMTool.Services.Controllers
 {
@@ -47,8 +48,8 @@ namespace PIMTool.Services.Controllers
                 return BadRequest(result.Message);  
             }
 
-            var projectResource = _mapper.Map<ProjectEntity, ProjectDto>(result.Resource);
-            return Ok(projectResource);
+            var projectResponse = _mapper.Map<ProjectEntity, ProjectDto>(result.Resource);
+            return Ok(projectResponse);
         }
 
         [Route(RouteConstants.AddProject)]
@@ -73,6 +74,18 @@ namespace PIMTool.Services.Controllers
                 return BadRequest(result.Message);
             }
             return Ok(result.Resource);
+        }
+
+        [Route(RouteConstants.SearchProject)]
+        [HttpGet]
+        public SearchProjectQueryResult GetSearchProjects(int selectedPage, int pageSize, string searchCriteria)
+        {
+            var query = new SearchProjectQuery();
+            query.SearchCriteria = searchCriteria;
+            query.SelectedPage = selectedPage;
+            query.PageSize = pageSize;
+            var result = _projectService.GetSearchProject(query);
+            return result;
         }
     }
 }

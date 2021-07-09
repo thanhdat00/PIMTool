@@ -1,6 +1,7 @@
 ﻿using PIMTool.Client.Presentation.Commands;
 using PIMTool.Client.WebApiClient.Services;
 using PIMTool.Services.Resource;
+using PIMTool.Services.Service.Models;
 using System;
 using System.Collections.Generic;
 using System.Windows.Input;
@@ -13,13 +14,30 @@ namespace PIMTool.Client.Presentation.ViewModels
         private bool _projectListSelected = true;
         private bool _createProjectSelected;
         private bool _editProjectSelected;
+        private bool _errorOccur;
         private ICommand _updateViewCommand;
 
         public readonly IProjectWebApiClient ProjectWebApiClient;
+        public readonly IEmployeeWebApiClient EmployeeWebApiClient;
         public List<ProjectDto> Projects { get; private set; }
+        public List<EmployeeDto> Employees { get; set; }
         public ProjectDto SelectedProject { get; set; }
 
         #region Getter Setter
+        public bool ErrorOccur
+        {
+            get { return _errorOccur; }
+            set
+            {
+                _errorOccur = value;
+                if (_errorOccur)
+                {
+                    _projectListSelected = false;
+                    _createProjectSelected = false;
+                    _editProjectSelected = false;
+                }
+            }
+        }
         public bool EditProjectSelected
         {
             get { return _editProjectSelected; }
@@ -65,29 +83,26 @@ namespace PIMTool.Client.Presentation.ViewModels
         {
             get
             {
-                return _updateViewCommand ?? (_updateViewCommand = new CommandHandler(HandleUpdateView, () => CanUpdateView()));
+                return _updateViewCommand ?? (_updateViewCommand = new CommandHandler(HandleUpdateView, () => { return true; }));
             }
         }
-
-        public bool CanUpdateView()
-        {
-            return true;
-        }
-
         public void HandleUpdateView(object obj)
         {
             if (ProjectListSelected)
                 SelectedViewModel = new ProjectListViewModel(this);
             else if (CreateProjectSelected)
-                SelectedViewModel = new DetailProjectViewModel(this,false);
+                SelectedViewModel = new DetailProjectViewModel(this, false);
             else if (EditProjectSelected)
-                SelectedViewModel = new DetailProjectViewModel(this,true,this.SelectedProject);
+                SelectedViewModel = new DetailProjectViewModel(this, true, this.SelectedProject);
         }
 
-        public MainViewModel(IProjectWebApiClient projectWebApiClient)
+        public MainViewModel(IProjectWebApiClient projectWebApiClient, IEmployeeWebApiClient employeeWebApiClient)
         {
             ProjectWebApiClient = projectWebApiClient;
-            Projects = projectWebApiClient.GetAllProjects();
+            EmployeeWebApiClient = employeeWebApiClient;
+
+            Projects = ProjectWebApiClient.GetAllProjects();
+            Employees = EmployeeWebApiClient.GetAllEmployees(); 
             SelectedViewModel = new ProjectListViewModel(this);
         }
 

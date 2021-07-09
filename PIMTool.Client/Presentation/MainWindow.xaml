@@ -59,6 +59,7 @@
 
         </Border>
 
+        
         <Grid Grid.Row="1" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="307"/>
@@ -94,6 +95,9 @@
                     </DataTemplate>
                     <DataTemplate DataType="{x:Type viewmodels:DetailProjectViewModel}">
                         <views:DetailProjectView/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewmodels:ErrorViewModel}">
+                        <views:ErrorView/>
                     </DataTemplate>
                 </ContentControl.Resources>
             </ContentControl>

@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Threading.Tasks;
 using PIMTool.Common;
 using PIMTool.Common.BusinessObjects;
 using PIMTool.Services.Resource;
+using PIMTool.Services.Service.Models;
 
 namespace PIMTool.Client.WebApiClient.Services
 {
@@ -39,6 +41,19 @@ namespace PIMTool.Client.WebApiClient.Services
         {
             string route = "DeleteProject/" + projectNumber.ToString();
             Task.Run(() => Delete(route));
+        }
+
+        public SearchProjectQueryResult GetSearchProject(SearchProjectQuery query)
+        {
+            //var queryParam = new NameValueCollection
+            //{
+            //    {"SearchCriteria", query.SearchCriteria },
+            //    {"SelectedPagee", query.SelectedPage.ToString()},
+            //    {"PageSize", query.PageSize.ToString() }
+            //};
+            string route = "SearchProject/"+ query.SearchCriteria + "/" +query.SelectedPage.ToString()
+                            + "/" + query.PageSize.ToString();
+            return Task.Run(() => Get<SearchProjectQueryResult>(route)).Result;
         }
     }
 }

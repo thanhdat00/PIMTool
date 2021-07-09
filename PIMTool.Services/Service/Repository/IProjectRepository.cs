@@ -10,7 +10,7 @@ namespace PIMTool.Services.Service.Repository
     public interface IProjectRepository : IBaseRepository<Entities.ProjectEntity>
     {
         ProjectEntity NewProject(SaveProjectDto project);
-        ProjectEntity UpdateProject(int projectNumber);
+        ProjectEntity FindProject(int projectNumber);
         SearchProjectQueryResult GetSearchProject(SearchProjectQuery query);
     }
 }

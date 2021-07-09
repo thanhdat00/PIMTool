@@ -139,11 +139,10 @@ namespace PIMTool.Client.Presentation.ViewModels
         }
 
         private void HandlePageSelect(object pageNumber)
-        {
+        { 
             var searchQuery = new SearchProjectQuery
             {
                 SearchCriteria = _currentSelectedStatus,
-                PageSize = 5,
                 SelectedPage = int.Parse(pageNumber.ToString()),
             };
             InitialSelectPage(searchQuery);

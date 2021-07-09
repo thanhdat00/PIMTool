@@ -30,46 +30,11 @@ namespace PIMTool.Client.Presentation.ViewModels
         private DateTime _startDate = DateTime.Now;
         private DateTime? _finishDate;
 
-        private ObservableCollection<string> _employeesSource = new ObservableCollection<string>();
-        private ObservableCollection<string> _selectedEmployee;
-
         private DetailProjectValidator _projectValidator;
         private ICommand _saveOrUpdateCommand;
         private bool _isEditMode;
         private bool _projectNumberEnable = true;
         private string _buttonMode = "Create Project";
-
-        public ObservableCollection<string> EmployeesSource
-        {
-            get { return _employeesSource; }
-            set
-            {
-                _employeesSource = value;
-            }
-        }
-
-        public ObservableCollection<string> SelectedEmployee
-        {
-            get 
-            { 
-                if (_selectedEmployee == null)
-                {
-                    _selectedEmployee = new ObservableCollection<string>();
-                    _selectedEmployee.CollectionChanged +=
-                        (s, e) =>
-                        {
-                            WriteSelectedEmployeesString(_selectedEmployee);
-                            OnPropertyChanged(nameof(SelectedEmployee));
-                        };
-                }
-                return _selectedEmployee; 
-            }
-            set
-            {
-                _selectedEmployee = value;
-            }
-        }
-
         private static string WriteSelectedEmployeesString(IList<string> list)
         {
             if (list.Count == 0)
@@ -241,12 +206,10 @@ namespace PIMTool.Client.Presentation.ViewModels
         {
             IsEditMode = isEditMode;
             _mainViewModel = mainViewModel;
-            _projectValidator = new DetailProjectValidator(_mainViewModel.Projects, isEditMode);
+            _projectValidator = new DetailProjectValidator(_mainViewModel.Projects,_mainViewModel.Employees, isEditMode);
             _projectWebApiClient = _mainViewModel.ProjectWebApiClient;
 
             EditedProject = project;
-            foreach (var item in _mainViewModel.Employees)
-                EmployeesSource.Add(item.Visa);
 
             if (IsEditMode)
             {

@@ -72,7 +72,7 @@ namespace PIMTool.Services.Service
         {
             using (var scope = _unitOfWorkProvider.Provide())
             {
-                var exsitingProject = _projectRepository.UpdateProject(value);
+                var exsitingProject = _projectRepository.FindProject(value);
 
                 if (exsitingProject == null)
                     return new ProjectResponse("Project not found");
@@ -87,7 +87,6 @@ namespace PIMTool.Services.Service
                 {
                     return new ProjectResponse($"An error occurred when deleting the project: {ex.Message}");
                 }
-
             }
         }
 
@@ -115,7 +114,7 @@ namespace PIMTool.Services.Service
             {
                 try
                 {
-                    var updateProject = _projectRepository.UpdateProject(project.ProjectNumber);
+                    var updateProject = _projectRepository.FindProject(project.ProjectNumber);
                     updateProject.Name = project.Name;
                     updateProject.Customer = project.Customer;
                     updateProject.Status = project.Status;

@@ -20,7 +20,7 @@ namespace PIMTool.Services.Service.Repository
             _mapper = mapper;
         }
         // Find the project which will be updated
-        public ProjectEntity UpdateProject(int projectNumber)
+        public ProjectEntity FindProject(int projectNumber)
         {
             ProjectEntity res = Session.QueryOver<ProjectEntity>()
                                 .Where(p => p.ProjectNumber == projectNumber).SingleOrDefault();

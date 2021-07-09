@@ -96,6 +96,9 @@
                     <DataTemplate DataType="{x:Type viewmodels:DetailProjectViewModel}">
                         <views:DetailProjectView/>
                     </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewmodels:ErrorViewModel}">
+                        <views:ErrorView/>
+                    </DataTemplate>
                 </ContentControl.Resources>
             </ContentControl>
             <Border BorderBrush="Gray" BorderThickness="0 0 1 0" />

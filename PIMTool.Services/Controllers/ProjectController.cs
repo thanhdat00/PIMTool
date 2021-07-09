@@ -48,8 +48,8 @@ namespace PIMTool.Services.Controllers
                 return BadRequest(result.Message);  
             }
 
-            var projectResource = _mapper.Map<ProjectEntity, ProjectDto>(result.Resource);
-            return Ok(projectResource);
+            var projectResponse = _mapper.Map<ProjectEntity, ProjectDto>(result.Resource);
+            return Ok(projectResponse);
         }
 
         [Route(RouteConstants.AddProject)]

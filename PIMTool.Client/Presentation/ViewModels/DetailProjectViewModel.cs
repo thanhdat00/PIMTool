@@ -29,27 +29,14 @@ namespace PIMTool.Client.Presentation.ViewModels
         private EStatusType _status;
         private DateTime _startDate = DateTime.Now;
         private DateTime? _finishDate;
+        private Dictionary<string, object> _items;
+        private Dictionary<string, object> _selectedItems;
 
         private DetailProjectValidator _projectValidator;
         private ICommand _saveOrUpdateCommand;
         private bool _isEditMode;
         private bool _projectNumberEnable = true;
         private string _buttonMode = "Create Project";
-        private static string WriteSelectedEmployeesString(IList<string> list)
-        {
-            if (list.Count == 0)
-                return String.Empty;
-
-            StringBuilder builder = new StringBuilder(list[0]);
-
-            for (int i = 1; i < list.Count; i++)
-            {
-                builder.Append(", ");
-                builder.Append(list[i]);
-            }
-
-            return builder.ToString();
-        }
 
         #region Getter Setter
         public ProjectDto EditedProject { get; set; }
@@ -160,6 +147,32 @@ namespace PIMTool.Client.Presentation.ViewModels
             }
         }
         #endregion 
+
+        public Dictionary<string, object> Items
+        {
+            get
+            {
+                return _items;
+            }
+            set
+            {
+                _items = value;
+                OnPropertyChanged(nameof(Items));
+            }
+        }
+
+        public Dictionary<string, object> SelectedItems
+        {
+            get
+            {
+                return _selectedItems;
+            }
+            set
+            {
+                _selectedItems = value;
+                OnPropertyChanged(nameof(SelectedItems));
+            }
+        }
         public ICommand SaveOrUpdateCommand
         {
             get
@@ -210,6 +223,13 @@ namespace PIMTool.Client.Presentation.ViewModels
             _projectWebApiClient = _mainViewModel.ProjectWebApiClient;
 
             EditedProject = project;
+            Items = new Dictionary<string, object>();
+            foreach(var item in _mainViewModel.Employees)
+            {
+                Items.Add(item.Visa, item);
+            }
+            
+            SelectedItems = new Dictionary<string, object>();
 
             if (IsEditMode)
             {
@@ -227,7 +247,6 @@ namespace PIMTool.Client.Presentation.ViewModels
             project.GroupId = GroupId + 1;
             project.Customer = Customer;
             project.Name = Name;
-            project.Member = Member.Trim(' ');
             project.Status = Status;
             project.StartDate = StartDate;
             project.FinishDate = FinishDate;
@@ -249,7 +268,6 @@ namespace PIMTool.Client.Presentation.ViewModels
             Name = EditedProject.Name;
             Customer = EditedProject.Customer;
             GroupId = EditedProject.GroupId - 1;
-            Member = EditedProject.Member;
             Status = EditedProject.Status;
             StartDate = EditedProject.StartDate;
             FinishDate = EditedProject.FinishDate;

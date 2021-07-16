@@ -38,13 +38,17 @@ namespace PIMTool.Services.Service.Repository
             result.GroupId = project.GroupId;           
             result.FinishDate = project.FinishDate;
             result.Status = project.Status;
-            string[] members = project.Member.Split(',');
-            foreach(var item in members)
+            if (project.Member != null)
             {
-                EmployeeEntity employee = Session.QueryOver<EmployeeEntity>()
-                                      .Where(p => p.Visa == item).SingleOrDefault();
-                result.Employees.Add(employee);
-            }             
+                string[] members = project.Member.Split(',');
+                foreach (var item in members)
+                {
+                    EmployeeEntity employee = Session.QueryOver<EmployeeEntity>()
+                                          .Where(p => p.Visa == item).SingleOrDefault();
+                    result.Employees.Add(employee);
+                }
+
+            }         
             return result;
         }
 

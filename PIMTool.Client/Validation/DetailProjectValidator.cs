@@ -40,9 +40,9 @@ namespace PIMTool.Client.Validation
                 .MaximumLength(MaxCustomerLength).WithMessage(ValidationResource.OverLengthInput)
                 .Must(HasSpecialCharater).WithMessage(ValidationResource.ContainSpecialChar);
 
-            RuleFor(p => p.Member)
-                .NotNull().WithMessage(ValidationResource.EmptyInput)
-                .Must(ValidateVisa).WithMessage("Invalid Visa");
+            //RuleFor(p => p.Member)
+            //    .NotNull().WithMessage(ValidationResource.EmptyInput)
+            //    .Must(ValidateVisa).WithMessage("Invalid Visa");
 
             RuleFor(p => p.FinishDate)
                 .GreaterThan(p => p.StartDate).WithMessage(ValidationResource.InvalidEndDate);

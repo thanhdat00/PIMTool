@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PIMTool.Client", "PIMTool.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PIMTool.Common", "PIMTool.Common\PIMTool.Common.csproj", "{4E0FA7FE-DFB0-4324-8921-3055417CB2A1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiSelectComboBox", "..\..\MultiSelectComboBox Demo(MVVM)\MultiSelectComboBox\MultiSelectComboBox.csproj", "{CE17A54E-0661-429F-AFDC-272E8668B14E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,14 @@ Global
 		{4E0FA7FE-DFB0-4324-8921-3055417CB2A1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4E0FA7FE-DFB0-4324-8921-3055417CB2A1}.Release|x86.ActiveCfg = Release|Any CPU
 		{4E0FA7FE-DFB0-4324-8921-3055417CB2A1}.Release|x86.Build.0 = Release|Any CPU
+		{CE17A54E-0661-429F-AFDC-272E8668B14E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE17A54E-0661-429F-AFDC-272E8668B14E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE17A54E-0661-429F-AFDC-272E8668B14E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CE17A54E-0661-429F-AFDC-272E8668B14E}.Debug|x86.Build.0 = Debug|Any CPU
+		{CE17A54E-0661-429F-AFDC-272E8668B14E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE17A54E-0661-429F-AFDC-272E8668B14E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE17A54E-0661-429F-AFDC-272E8668B14E}.Release|x86.ActiveCfg = Release|Any CPU
+		{CE17A54E-0661-429F-AFDC-272E8668B14E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

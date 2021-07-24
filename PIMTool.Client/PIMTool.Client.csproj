@@ -132,7 +132,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\MultiSelectComboBox Demo%28MVVM%29\MultiSelectComboBox\MultiSelectComboBox.csproj">
+    <ProjectReference Include="..\MultiSelectComboBox\MultiSelectComboBox.csproj">
       <Project>{ce17a54e-0661-429f-afdc-272e8668b14e}</Project>
       <Name>MultiSelectComboBox</Name>
     </ProjectReference>

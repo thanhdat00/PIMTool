@@ -300,6 +300,7 @@
     <Compile Include="Dto\TaskResource.cs" />
     <Compile Include="Service\Communication\BaseResponse.cs" />
     <Compile Include="Service\Communication\ProjectResponse.cs" />
+    <Compile Include="Service\CustomExceptionFilter.cs" />
     <Compile Include="Service\EmployeeService.cs" />
     <Compile Include="Service\Entities\BaseEntity.cs" />
     <Compile Include="Service\Entities\EmployeeEntity.cs" />

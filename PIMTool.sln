@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PIMTool.Client", "PIMTool.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PIMTool.Common", "PIMTool.Common\PIMTool.Common.csproj", "{4E0FA7FE-DFB0-4324-8921-3055417CB2A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiSelectComboBox", "..\..\MultiSelectComboBox Demo(MVVM)\MultiSelectComboBox\MultiSelectComboBox.csproj", "{CE17A54E-0661-429F-AFDC-272E8668B14E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiSelectComboBox", "MultiSelectComboBox\MultiSelectComboBox.csproj", "{CE17A54E-0661-429F-AFDC-272E8668B14E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -135,6 +135,11 @@ namespace PIMTool.Client.WebApiClient
                     message = $"Web API service url returned error code: '{response.StatusCode}'";
                 }
 
+                if (response.Content != null)
+                {
+
+                }
+
                 throw new Exception(message);
             }
         }

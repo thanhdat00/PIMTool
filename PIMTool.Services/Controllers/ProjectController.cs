@@ -10,6 +10,7 @@ using PIMTool.Services.Service.Models;
 namespace PIMTool.Services.Controllers
 {
     [RoutePrefix(RouteConstants.ProjectApi)]
+    [CustomExceptionFilter]
     public class ProjectController : ApiController
     {
         private readonly IProjectService _projectService;

@@ -72,24 +72,7 @@
                     <ComboBoxItem Content="New"/>
                     <ComboBoxItem Content="Old"/>
                 </ComboBox>
-                <!--<src:MultiComboBox SelectionMode="Multiple"
-                                       VerticalAlignment="Center"
-                                       IsCreateNewEnabled="False"
-                                       DisplaySeparator=", "                                      
-                                       ItemsSource="{Binding EmployeesSource}"
-                                       SelectedItems="{Binding SelectedEmployee}"
-                                       />-->
-                <!--<TextBox Text="{Binding Member,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="633" Height="25" Margin="30 38 0 0" >
-                    <Validation.ErrorTemplate>
-                        <ControlTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                --><!-- Placeholder for the TextBox itself --><!--
-                                <AdornedElementPlaceholder x:Name="textBox"/>
-                                <TextBlock Margin="10" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
-                            </StackPanel>
-                        </ControlTemplate>
-                    </Validation.ErrorTemplate>
-                </TextBox>-->
+
                 <control:MultiSelectComboBox Width="633" Height="25" Margin="30 38 0 0"
                                              ItemsSource="{Binding Items}" 
                                              SelectedItems="{Binding SelectedItems}" 

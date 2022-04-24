@@ -15,6 +15,7 @@ namespace PIMTool.Client.DependencyInjection
         private void BindWebApiClients()
         {
             Bind<IProjectWebApiClient>().To<ProjectWebApiClient>().InSingletonScope();
+            Bind<IEmployeeWebApiClient>().To<EmployeeWebApiClient>().InSingletonScope();
         }
 
         private void BindTransportLayer()

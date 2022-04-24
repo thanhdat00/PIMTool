@@ -58,9 +58,11 @@ namespace PIMTool.Services.Service.Pattern.SessionFactory
 
         public virtual void MappingTable(ModelMapper mapper)
         {
+            mapper.AddMapping<EmployeeMap>();
+            mapper.AddMapping<GroupMap>();
             mapper.AddMapping<ProjectMap>();
             mapper.AddMapping<TaskMap>();
-            mapper.AddMapping<TaskAudMap>();
+            mapper.AddMapping<TaskAudMap>();                  
         }
     }
 }

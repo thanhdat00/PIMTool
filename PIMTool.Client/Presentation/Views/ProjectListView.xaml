@@ -1,0 +1,129 @@
+﻿<UserControl x:Class="PIMTool.Client.Presentation.Views.ProjectListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PIMTool.Client.Presentation.Views"
+             xmlns:viewModels="clr-namespace:PIMTool.Client.Presentation.ViewModels" xmlns:x1="clr-namespace:PIMTool.Client.Extension"
+             mc:Ignorable="d" 
+             >
+    <Grid Margin="40 38 50 0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="0 0 20 0">
+            <TextBlock Text="Project List" FontSize="16"/>
+            <Border BorderBrush="LightGray" BorderThickness="0 0 0 1" Margin="0 10 0 0" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0 30 0 0">
+            <TextBox Text="{Binding ProjectFilter, UpdateSourceTrigger=PropertyChanged}" Width="347" Height="30">
+                
+            </TextBox>
+            <ComboBox SelectedValuePath="Value" DisplayMemberPath="Description" 
+                      ItemsSource="{Binding Path=Status, Converter={x1:EnumToCollectionConverter}}"
+                SelectedIndex="{Binding StatusFilter}" Width="220" Height="30" Margin="21 0 0 0">
+            </ComboBox>
+            <Button Command="{Binding SearchCommand}" Background="#2F85FA" Width="180" Height="30" Margin="40 0 0 0" Foreground="White">
+                Search Project
+            </Button>
+            <Button Command="{Binding ResetSearchCommand}" BorderBrush="Transparent" Background="Transparent" Height="30" Foreground="#2F85FA" Margin="40 0 0 0">
+                Reset Search
+            </Button>
+        </StackPanel>
+
+        <ListView Grid.Row="2" Margin="0 20 0 0"
+                  Height="auto"
+                  HorizontalAlignment="Left"
+                  ItemsSource="{Binding ProjectCollectionView}"
+                  SelectedItem="{Binding SelectedItem}" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Number"  Width="60" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock FontSize="15" Text="{Binding ProjectNumber}">
+                                </TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Name"  Width="350">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" FontSize="15" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Status"  Width="110" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Status}" FontSize="15" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Customer" Width="140">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Customer}" FontSize="15" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Start Date" Width="200">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding StartDate}" FontSize="15" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Delete" Width="60">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Command="{Binding DeleteProjectCommand, Mode=OneWay}" CommandParameter="{Binding ProjectNumber}"
+                                        Margin="10 0 0 0" Background="WhiteSmoke">
+                                    <Button.Content>
+                                        <Image Source="/Images/delete_icon.jpg" Height="20" />
+                                    </Button.Content>
+                                </Button>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+            </GridView>
+            </ListView.View>
+        </ListView>
+        <StackPanel Margin="550 20 0 0" Orientation="Horizontal"
+                    Grid.Row="3">
+            <Button Width="30" Height="30">
+                <Button.Content>
+                    <Image Source="/Images/previous_page.png" />
+                </Button.Content>
+            </Button>
+
+            <ItemsControl ItemsSource="{Binding PageCollection,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Width="30" Height="30"
+                                Content="{Binding PageNumber}"
+                                Command="{Binding PageSelectCommand}"
+                                CommandParameter="{Binding PageNumber}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <Button Width="30" Height="30">
+                <Button.Content>
+                    <Image Source="/Images/nextpage_icon.png" />
+                </Button.Content>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

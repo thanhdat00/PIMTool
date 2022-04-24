@@ -1,0 +1,49 @@
+# developer (local) files
+config/my.values
+
+# Configs
+*.bak
+database/migration/MigrateDatabase.bat
+database/setup/CreateDatabase.bat
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Bb]in/
+[Oo]bj/
+BuildLog.txt
+
+# Visual Studio 2015 cache/options directory
+.vs/
+
+# IIS null files
+(null)*
+
+# Visual Studio Code settings
+.vscode/
+
+# ReSharper is a .NET coding add-in
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# NuGet
+# The packages folder can be ignored because of Package Restore
+**/packages/*
+
+# ExtApps
+ExtApps
+/log/**/*
+
+src/Server/Ksta.VeraJp.WebApi.Server/log/Ksta.VeraJp.Server.log
+
+# Theme designer
+TemplatesModel/
+Publish/
+obj.Wpf/
+obj.Temp/

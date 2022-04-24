@@ -70,6 +70,24 @@ namespace PIMTool.Client.WebApiClient
             return JsonConvert.DeserializeObject<T>(responseContentString, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Objects });
         }
 
+        protected async Task Put(string url, object value, NameValueCollection queryParams = null)
+        {
+            string route = GetRoute(url, queryParams);
+            string completeUrl = $"{BaseAddressServices}\\{route}";
+
+            ClassTracer.DebugFormat("Request [Put] to url '{0}{1}' with data '{2}'", BaseAddressServices, route, value);
+            var postContent = CreateJsonContentFromObject(value);
+            await PerformWebClientAction(client => client.PutAsync(route, postContent), completeUrl);
+        }
+        protected async Task Delete(string url, NameValueCollection queryParams = null)
+        {
+            string route = GetRoute(url, queryParams);
+            string completeUrl = $"{BaseAddressServices}\\{route}";
+
+            ClassTracer.DebugFormat("Request [Put] to url '{0}{1}' with data '{2}'", BaseAddressServices, route);
+            await PerformWebClientAction(client => client.DeleteAsync(route), completeUrl);
+        }
+
         /// <summary>
         /// Special handling for posting log messages as this must not log any further messages to prevent a loop.
         /// </summary>
@@ -117,6 +135,11 @@ namespace PIMTool.Client.WebApiClient
                     message = $"Web API service url returned error code: '{response.StatusCode}'";
                 }
 
+                if (response.Content != null)
+                {
+
+                }
+
                 throw new Exception(message);
             }
         }
@@ -148,7 +171,7 @@ namespace PIMTool.Client.WebApiClient
                     TypeNameHandling = TypeNameHandling.Objects
                 }),
                 Encoding.UTF8, ApplicationJson);
-            return postContent;
+            return postContent;           
         }
     }
 }

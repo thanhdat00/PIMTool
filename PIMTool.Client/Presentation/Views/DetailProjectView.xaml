@@ -1,0 +1,124 @@
+﻿<UserControl x:Class="PIMTool.Client.Presentation.Views.DetailProjectView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PIMTool.Client.Presentation.Views" 
+             xmlns:x1="clr-namespace:PIMTool.Client.Extension" 
+             xmlns:viewmodels="clr-namespace:PIMTool.Client.Presentation.ViewModels" xmlns:control="clr-namespace:MultiSelectComboBox;assembly=MultiSelectComboBox" d:DataContext="{d:DesignInstance Type=viewmodels:DetailProjectViewModel}"
+             mc:Ignorable="d" >
+    <Grid Margin="50 50 414 30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <TextBlock Text="New Project" FontSize="18"/>
+            <Border BorderBrush="Gray" BorderThickness="0 0 0 1" Margin="0 10 0 0"></Border>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Margin="35 38 0 0" Orientation="Horizontal">
+            <StackPanel Grid.Row="1" Grid.Column="0" Width="auto">
+                <TextBlock Text="Project Number" FontSize="15" Height="25"/>
+                <TextBlock Text="Project Name" FontSize="15" Height="25" Margin="0 38 0 0"/>
+                <TextBlock Text="Customer" FontSize="15" Height="25" Margin="0 38 0 0"/>
+                <TextBlock Text="Group" FontSize="15" Height="25" Margin="0 38 0 0"/>
+                <TextBlock Text="Member" FontSize="15" Height="25" Margin="0 38 0 0"/>
+                <TextBlock Text="Status" FontSize="15" Height="25" Margin="0 38 0 0"/>
+                <TextBlock Text="Start Date" FontSize="15" Height="25" Margin="0 38 0 0"/>
+                <Border BorderBrush="Gray" BorderThickness="0 1 0 0" Margin="0 30 0 0"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="1" Margin="46 0 0 0" >
+                <TextBox Text="{Binding ProjectNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                         IsEnabled="{Binding ProjectNumberEnable}"
+                         Width="204" Height="25" Margin="30 0 0 0" HorizontalAlignment="Left" PreviewTextInput="ProjectNumber_PreviewTextInput">
+                    <Validation.ErrorTemplate>
+                        <ControlTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <!-- Placeholder for the TextBox itself -->
+                                <AdornedElementPlaceholder x:Name="textBox"/>
+                                <TextBlock Margin="10" VerticalAlignment="Center" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Validation.ErrorTemplate>
+                </TextBox>
+                <TextBox Text="{Binding Name,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  Width="633" Height="25" Margin="30 38 0 0">
+                    <Validation.ErrorTemplate>
+                        <ControlTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <!-- Placeholder for the TextBox itself -->
+                                <AdornedElementPlaceholder x:Name="textBox"/>
+                                <TextBlock Margin="10" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Validation.ErrorTemplate>
+                </TextBox>
+                <TextBox Text="{Binding Customer,Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="633" Height="25" Margin="30 38 0 0">
+                    <Validation.ErrorTemplate>
+                        <ControlTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <!-- Placeholder for the TextBox itself -->
+                                <AdornedElementPlaceholder x:Name="textBox"/>
+                                <TextBlock Margin="10" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Validation.ErrorTemplate>
+                </TextBox>
+                <ComboBox 
+                          SelectedIndex="{Binding GroupId, Mode=TwoWay}" 
+                          Width="204" Height="25" Margin="30 38 0 0" HorizontalAlignment="Left">
+                    <ComboBoxItem Content="New"/>
+                    <ComboBoxItem Content="Old"/>
+                </ComboBox>
+
+                <control:MultiSelectComboBox Width="633" Height="25" Margin="30 38 0 0"
+                                             ItemsSource="{Binding Items}" 
+                                             SelectedItems="{Binding SelectedItems}" 
+                                             x:Name="MC" 
+                                             ToolTip="{Binding Path=Text, RelativeSource={RelativeSource Self}}"/>
+                <ComboBox SelectedValuePath="Value" DisplayMemberPath="Description" 
+                          ItemsSource="{Binding Path=Status, Converter={x1:EnumToCollectionConverter}, Mode=OneTime, ValidatesOnDataErrors=True}"
+                          SelectedValue="{Binding Path=Status, Mode=TwoWay}"
+                          Width="204" Height="25" Margin="30 38 0 0" HorizontalAlignment="Left">
+                    <Validation.ErrorTemplate>
+                        <ControlTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <!-- Placeholder for the TextBox itself -->
+                                <AdornedElementPlaceholder x:Name="textBox"/>
+                                <TextBlock Margin="10" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Validation.ErrorTemplate>
+                </ComboBox>
+                <StackPanel Orientation="Horizontal" Margin="30 38 0 0" >
+                    <DatePicker SelectedDate="{Binding StartDate, Mode=TwoWay}" Width="204" Height="25"/>
+                    <TextBlock Text="End Date" Margin="112 0 0 0" FontSize="15"/>
+                    <DatePicker SelectedDate="{Binding FinishDate,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="204" Height="25" Margin="55 0 0 0" RenderTransformOrigin="1.41,0.56" >
+                        <Validation.ErrorTemplate>
+                            <ControlTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <!-- Placeholder for the TextBox itself -->
+                                    <AdornedElementPlaceholder x:Name="textBox"/>
+                                    <TextBlock Margin="10 0 0 1" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                                </StackPanel>
+                            </ControlTemplate>
+                        </Validation.ErrorTemplate>
+                    </DatePicker>
+                </StackPanel>
+                <Border BorderBrush="Gray" BorderThickness="0 1 0 0" Margin="-46 30 0 0"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Margin="424 20 0 0" Grid.Row="2" Orientation="Horizontal">
+            <Button Width="184" Height="35" Background="White" Foreground="Black" FontWeight="Bold">
+                Cancel
+            </Button>
+            <Button Width="184" Height="35" Margin="58 0 0 0" Background="#2F85FA"
+                    Content="{Binding ButtonMode}"
+                    Foreground="White" Command="{Binding SaveOrUpdateCommand}">
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

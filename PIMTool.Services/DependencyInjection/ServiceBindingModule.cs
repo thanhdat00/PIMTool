@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using AutoMapper;
 using log4net;
 using NHibernate;
 using Ninject;
@@ -9,6 +6,7 @@ using Ninject.Modules;
 using Ninject.Web.Common;
 using PIMTool.Services.Constants;
 using PIMTool.Services.Service;
+using PIMTool.Services.Service.Map;
 using PIMTool.Services.Service.Pattern;
 using PIMTool.Services.Service.Pattern.SessionFactory;
 using PIMTool.Services.Service.Repository;
@@ -46,6 +44,18 @@ namespace PIMTool.Services.DependencyInjection
         {
             Bind<IProjectService>().To<ProjectService>().InSingletonScope();
             Bind<IProjectRepository>().To<ProjectRepository>();
+            Bind<IEmployeeService>().To<EmployeeService>().InSingletonScope();
+            Bind<IEmployeeRepository>().To<EmployeeRepository>();
+            Bind<IMapper>()
+                .ToMethod(context =>
+                {
+                    var config = new MapperConfiguration(cfg =>
+                    {
+                        cfg.AddProfile<EntityToResourceMap>();
+                        cfg.AddProfile<ResourceToEntityMap>();
+                    });
+                    return config.CreateMapper();
+                }).InSingletonScope();
         }
     }
 }

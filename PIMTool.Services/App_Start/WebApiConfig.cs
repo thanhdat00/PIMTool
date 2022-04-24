@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using PIMTool.Services.Service;
 using System.Web.Http;
 
 namespace PIMTool.Services
@@ -22,6 +20,10 @@ namespace PIMTool.Services
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+            config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling
+                    = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+
+            config.Filters.Add(new CustomExceptionFilter());
         }
     }
 }

@@ -10,7 +10,9 @@ namespace PIMTool.Test
             LoadModule();
             Bind<IProjectRepository>().To<ProjectRepository>();
             Bind<IProjectService>().To<ProjectService>();
-
+            Bind<IEmployeeRepository>().To<EmployeeRepository>();
+            Bind<IGroupRepository>().To<GroupRepository>();
+            Bind<ITaskAudRepository>().To<TaskAudRepository>();
         }
 
     }

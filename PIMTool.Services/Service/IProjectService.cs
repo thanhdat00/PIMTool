@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using PIMTool.Services.Resource;
+using PIMTool.Services.Service.Communication;
+using PIMTool.Services.Service.Models;
+using System.Collections.Generic;
 
 namespace PIMTool.Services.Service
 {
@@ -6,5 +9,10 @@ namespace PIMTool.Services.Service
     {
         IList<Entities.ProjectEntity> GetAll();
         Entities.ProjectEntity GetById(int projectId);
+        ProjectResponse DeleteById(int projectId);
+        ProjectResponse Save(SaveProjectDto project);
+        ProjectResponse Update(SaveProjectDto project);
+        ProjectResponse DeleteByProjectNumber(int value);
+        SearchProjectQueryResult GetSearchProject(SearchProjectQuery query);
     }
 }

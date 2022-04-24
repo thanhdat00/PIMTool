@@ -6,7 +6,6 @@ namespace PIMTool.Services.Service.Pattern
 
     public interface IUnitOfWorkScope : IDisposable
     {
-
         ISession Session
         {
             get;

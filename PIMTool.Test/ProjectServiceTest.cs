@@ -10,6 +10,7 @@ using Ninject.Modules;
 using NUnit.Framework;
 using PIMTool.Services.Service;
 using PIMTool.Services.Service.Entities;
+using PIMTool.Services.Service.Pattern;
 using PIMTool.Services.Service.Repository;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
@@ -26,12 +27,16 @@ namespace PIMTool.Test
 
         public IProjectRepository ProjectRepository => Kernel.Get<IProjectRepository>();
         public IProjectService ProjectService => Kernel.Get<IProjectService>();
+        public IEmployeeRepository EmployeeRepository => Kernel.Get<IEmployeeRepository>();
+        public IGroupRepository GroupRepository => Kernel.Get<IGroupRepository>();
+        public ITaskAudRepository TaskAudRepository => Kernel.Get<ITaskAudRepository>();
 
-        [TestFixtureSetUp]
+        [SetUp]
         public void TestFixtureSetup()
         {
             Setup();
-            _generator = new ProjectDataGenerator(UnitOfWorkProvider, ProjectRepository);
+            _generator = new ProjectDataGenerator(UnitOfWorkProvider, ProjectRepository
+                                        , EmployeeRepository, GroupRepository, TaskAudRepository);
         }
 
         [Test]
@@ -40,7 +45,7 @@ namespace PIMTool.Test
             ProjectEntity project1 = new ProjectEntity();
             try
             {
-                project1 = _generator.InitProject("Project1");
+                project1 = _generator.InitProject("Project1",1);
 
 
                 var task1_1 = _generator.AddTask("Task1_1", project1);
@@ -64,11 +69,6 @@ namespace PIMTool.Test
                 var countTask = listDbProjects.FirstOrDefault(i => i.Name == "Project1").Task.Count;
                 Assert.IsTrue(countTask == 3);
 
-
-                project1 = _generator.InitProject("Test2");
-                _generator.AddProject(project1);
-                Assert.IsTrue(project1.Id > 0);
-
             }
             finally
             {
@@ -77,9 +77,7 @@ namespace PIMTool.Test
                     _generator.DeleteProject(project1);
                 }
             }
-
         }
-
 
         [Test]
         public void TestShowTopTenNewTasksEachProject()
@@ -90,7 +88,7 @@ namespace PIMTool.Test
                 int numberProjectsCreate = 100;
                 for (int i = 1; i <= numberProjectsCreate; i++)
                 {
-                    var project = _generator.InitProject("Project" + i);
+                    var project = _generator.InitProject("Project" + i,i);
                     _generator.AddTask("Task1_" + i, project);
                     _generator.AddTask("Task2_" + i, project);
                     _generator.AddTask("Task3_" + i, project);
@@ -104,12 +102,12 @@ namespace PIMTool.Test
                 using (var scope = UnitOfWorkProvider.Provide())
                 {
                     listDbProjects = ProjectService.GetAll();
-                    listDbProjects.ForEach(itemProject =>
+
+                    foreach (var itemProject in listDbProjects)
                     {
                         List<TaskEntity> tasks = itemProject.Task.OrderByDescending(i => i.Id).Take(10).ToList();
                         toptenTaskEachProjects.Add(itemProject.Id, tasks);
-
-                    });
+                    }
                     scope.Complete();
                 }
 
@@ -131,7 +129,7 @@ namespace PIMTool.Test
             ProjectEntity project1 = new ProjectEntity();
             try
             {
-                project1 = _generator.InitProject("Project1");
+                project1 = _generator.InitProject("Project1",1);
 
 
                 var task1_1 = _generator.AddTask("Task1_1", project1);
@@ -149,17 +147,14 @@ namespace PIMTool.Test
                 using (var scope = UnitOfWorkProvider.Provide())
                 {
                     var dbProject1 = ProjectService.GetById(project1.Id);
-                    dbProject1.Task[0].DeadlineDate = utcDate;
+                    dbProject1.Task.ElementAt(0).DeadlineDate = utcDate;
                     _generator.Merge(dbProject1);
+                    scope.Complete();
                 }
 
                 // load again and check finishDate update successfuly
-                using (var scope = UnitOfWorkProvider.Provide())
-                {
-                    var dbProject1 = ProjectService.GetById(project1.Id);
-                    Assert.IsTrue(dbProject1.Task[0].DeadlineDate == utcDate);
-                }
-
+                    var dbProject2 = ProjectService.GetById(project1.Id);
+                    Assert.IsTrue(utcDate.ToString().Equals(dbProject2.Task.ElementAt(0).DeadlineDate.ToString()));
             }
             finally
             {
@@ -170,8 +165,6 @@ namespace PIMTool.Test
             }
         }
 
-
-
         [Test]
         public void TestUpdateTaskProject()
         {
@@ -179,7 +172,7 @@ namespace PIMTool.Test
 
             try
             {
-                project1 = _generator.InitProject("Project1");
+                project1 = _generator.InitProject("Project1",1);
                 var task = _generator.AddTask("Task1_1", project1);
                 TaskAudEntity taskAud = null;
                 _generator.AddProject(project1);
@@ -193,17 +186,15 @@ namespace PIMTool.Test
                         {
                             var taskDb = _generator.GetTask(task.Id);
                             taskDb.DeadlineDate = DateTime.MinValue;
-                            _generator.MergeTask(taskDb);
+                            task = _generator.MergeTask(taskDb);
                             scope.Complete();
                         }
 
-                        using (var scope = UnitOfWorkProvider.Provide())
+                        using (var scope = UnitOfWorkProvider.Provide(UnitOfWorkScopeOption.RequiresNew))
                         {
                             var taskDb = _generator.GetTask(task.Id);
                             taskAud = _generator.AddTaskAud(taskDb, taskDb.RowVersion > task.RowVersion ? "UpdatedOK" : "UpdateKO");
                             taskAud = _generator.MergeTaskAud(taskAud);
-
-
                             scope.Complete();
                         }
                         globalScope.Complete();
@@ -218,9 +209,8 @@ namespace PIMTool.Test
                     Assert.IsNotNull(taskAud);
                     taskAud = _generator.GetTaskAud(taskAud.Id);
                     Assert.IsTrue(taskAud.Name != null);
+                    scope.Complete();
                 }
-
-
             }
             finally
             {
@@ -230,6 +220,5 @@ namespace PIMTool.Test
                 }
             }
         }
-
     }
 }
